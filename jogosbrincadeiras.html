@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jogos, Brinquedos e Brincadeiras — Planejamento de Aulas</title>
+  <meta name="description" content="Página responsiva com o planejamento completo da disciplina Jogos, Brinquedos e Brincadeiras, incluindo ementa, cronograma de aulas e critérios de avaliação." />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#111111;
+      --muted:#5b5b5b;
+      --brand:#185adb;
+      --chip:#eef2ff;
+      --card:#f8fafc;
+      --focus:#111111;
+      --radius:14px;
+      --shadow:0 6px 24px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+      line-height:1.6;
+      color:var(--fg);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    .container{
+      max-width:960px;
+      margin-inline:auto;
+      padding:clamp(16px, 2.5vw, 28px);
+    }
+    header{
+      background:linear-gradient(180deg, var(--chip), #fff);
+      padding:clamp(18px, 2.8vw, 28px);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    h1{
+      margin:0 0 .35rem 0;
+      font-size:clamp(1.5rem, 2.6vw, 2.1rem);
+      line-height:1.2;
+      letter-spacing:.2px;
+    }
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem 1rem;
+      color:var(--muted);
+      font-size:.98rem;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.35rem .65rem;
+      border-radius:999px;
+      background:var(--chip);
+      color:#1f2937;
+      font-weight:600;
+      font-size:.9rem;
+    }
+    a{color:var(--brand); text-decoration:underline; text-underline-offset:2px}
+    a:focus-visible, summary:focus-visible{outline:3px solid var(--focus); outline-offset:3px; border-radius:8px}
+
+    .section{
+      margin-top:clamp(18px, 3vw, 28px);
+      padding:clamp(12px, 2vw, 18px);
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .section h2{
+      margin-top:0;
+      font-size:clamp(1.2rem, 2.2vw, 1.5rem);
+    }
+
+    /* Accordion (detalhes das aulas) */
+    details{
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:12px;
+      padding:.25rem .75rem;
+      margin:.5rem 0 1rem 0;
+    }
+    summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding:.9rem .25rem;
+      font-weight:700;
+      font-size:1rem;
+    }
+    summary::-webkit-details-marker{display:none}
+    .summary-left{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+      flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.25rem .6rem;
+      background:var(--chip);
+      border-radius:999px;
+      font-weight:600;
+      font-size:.85rem;
+      color:#1f2937;
+    }
+    .title{
+      font-weight:700;
+      font-size:1rem;
+    }
+    .date{
+      color:var(--muted);
+      font-weight:600;
+      font-variant-numeric:tabular-nums;
+    }
+    .caret{
+      margin-left:auto;
+      transition:transform .2s ease;
+      font-size:1.1rem;
+    }
+    details[open] .caret{transform:rotate(90deg)}
+    .content{
+      border-top:1px dashed #e5e7eb;
+      padding:1rem .25rem 1rem .25rem;
+      font-size:1rem;
+    }
+
+    /* Lista de avaliação */
+    .eval-list{
+      margin:.5rem 0 0 0;
+      padding-left:1.1rem;
+    }
+    .eval-list li{margin:.25rem 0}
+
+    /* Acessibilidade, contraste e responsividade */
+    @media (prefers-reduced-motion: reduce){
+      .caret{transition:none}
+    }
+    @media (max-width:480px){
+      summary{font-size:1rem}
+      .meta{font-size:.95rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header aria-labelledby="titulo-principal">
+      <h1 id="titulo-principal">Jogos, Brinquedos e Brincadeiras</h1>
+      <div class="meta" aria-label="dados da disciplina">
+        <span class="chip">Disciplinas: Jogo,  Brinquedos e Brincadeiras</span>
+        <span class="chip">Professoras: Mary Grace Pereira Andrioli e Maria Julia Mendes Nogueira</span>
+        <span class="chip">
+          <a href="mailto:maryg@ifsp.edu.br" aria-label="e-mail da professora Mary">maryg@ifsp.edu.br</a> e
+          <a href="mailto:julia.nogueira@ifsp.edu.br" aria-label="e-mail da professora Julia">julia.nogueira@ifsp.edu.br</a>
+        </span>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="ementa">
+      <h2 id="ementa">Resumo da ementa</h2>
+      <p>
+        O componente curricular propõe estudos, reflexões, investigações e vivências relacionadas aos jogos, brinquedos e brincadeiras na Educação Infantil e nas séries iniciais do ensino fundamental, bem como a sua relação com os processos de subjetivação, socialização e aprendizagem. A vivência de jogos e brincadeiras e a formação docente. O conhecimento e a prática dos jogos de regras. A manifestação da cultura popular brasileira, nos jogos e brincadeiras de diferentes regiões do Brasil e do mundo, bem como jogos, brinquedos e brincadeiras de origem indígena e africana.
+      </p>
+    </section>
+
+    <section class="section" aria-labelledby="planejamento">
+      <h2 id="planejamento">📘 Planejamento da sequência de aulas</h2>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 01</span>
+            <time class="date" datetime="2025-07-31">31/07</time>
+            <span class="pill">Apresentações da turma, jogos teatrais e sonoros</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>Atividades realizadas: Roda de conversa. Apresentação das professoras. Roda de jogos teatrais em que cada estudante se apresenta, compartilha uma palavra que o representa. Dramatização com um lapis e fita crepe, jogos com mímica e sons. Composição a partir do som de cada um. Atividade em grupo e apresentações.Aula já realizada (2 aulas)</p>
+          <p>Material complementar: vídeo-bate papo sobre o documentário Tarja Branca: <a href="https://drive.google.com/file/d/1BzZ-g48XUi1UZTig39sEzvNKtmtTg3n6/view?usp=sharing">https://drive.google.com/file/d/1BzZ-g48XUi1UZTig39sEzvNKtmtTg3n6/view?usp=sharing</a></p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 02</span>
+            <time class="date" datetime="2025-08-07">07/08</time>
+            <span class="pill">Práticas pedagógicas democráticas na Escola Manoel A. Coelho</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>Atividades realizadas: Encontro com estudantes da Unesp Marilia e professora Mila da Escola Manoel Antonio Coelho.Aula já realizada (2 aulas)</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 03</span>
+            <time class="date" datetime="2025-08-14">14/08</time>
+            <span class="pill">Apresentação da disciplina, aprendizagem cooperativa.</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>Atividades realizadas:
+          Disposição dos estudante em roda com todos próximos e depois ampliada a medida que chegavam novos membros. Entrega de materiais aos grupos e orientações sobre o compromisso do registro de participação de todos e compromissos. Escuta ativa na apresentação do diário de Frida Kahlo em roda de conversa. Participação dialogada na discussão sobre aprendizagem cooperativa. Escuta de música e roda de conversa sobre as sensações envolvidas.Aula já realizada (2 aulas)</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 04</span>
+            <time class="date" datetime="2025-08-21">21/08</time>
+            <span class="pill">Jogos e atividades cooperativas com Prof. Frank Viana</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>Aula já realizada (2 aulas)</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 05</span>
+            <time class="date" datetime="2025-08-28">28/08</time>
+            <span class="pill">Jogos com materiais não estruturados – Representação dos princípios da cooperação.</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>Atividades realizadas: Atividade em grupo com jogo Abastratus, representação das dimensões da Aprendizagem cooperativa em equipes. (2 aulas)</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 06</span>
+            <time class="date" datetime="2025-08-31">31/08 (sábado)</time>
+            <span class="pill">Campus Aberto: Espaço Brincar e atividades com a comunidade</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>Atividade de extensão (2 aulas)</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 07</span>
+            <time class="date" datetime="2025-09-04">04/09</time>
+            <span class="pill">Registros no portfólio e preparação de materiais não estruturados. Inserir no fórum do moodle</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>(2 aulas)</p>
+
+          <p>Referências sobre materiais não estruturados: <a href="https://www.instagram.com/reel/DFnmiMPP3B0/">https://www.instagram.com/reel/DFnmiMPP3B0/</a></p>
+          <p>Como usar materiais não estruturados na Educação Infantil: <a href="https://novaescola.org.br/conteudo/21721/como-usar-materiais-de-largo-alcance-ou-nao-estruturados-na-educacao-infantil">https://novaescola.org.br/conteudo/21721/como-usar-materiais-de-largo-alcance-ou-nao-estruturados-na-educacao-infantil</a></p>
+          <p>Material não estruturado - Tempo de creche - <a href="https://tempodecreche.com.br/tag/material-nao-estruturado/">https://tempodecreche.com.br/tag/material-nao-estruturado/</a></p>
+        </div>
+      </details>
+
+      <details open>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 08</span>
+            <time class="date" datetime="2025-09-11">11/09</time>
+            <span class="pill">Troca de experiências + Contação de histórias (Profª Maju)</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>Leitura recomendada: Tizuko – Jogo, brinquedo e brincadeira (2 aulas)</p>
+          <p>KISHIMOTO, Tizuko M. O jogo e a educação infantil in Jogo, brinquedo, brincadeira e a educação. 11 ed. São Paulo: Cortez, 2008. Disponível em:  <a href="https://drive.google.com/file/d/1NbkCu8FnQvzlvVLJwL0pojuYwBoYP34f/view?usp=sharing">https://drive.google.com/file/d/1NbkCu8FnQvzlvVLJwL0pojuYwBoYP34f/view?usp=sharing</a></p>
+          <p>Leitura complementar: 1. HUIZINGA, J. Natureza e Significado do Jogo como Fenômeno Cultural in Homo ludens: o jogo como elemento da cultura. São Paulo: Perspectiva, 2014.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 09</span>
+            <time class="date" datetime="2025-09-18">18/09</time>
+            <span class="pill">Oficina de construção de jogos – tabuleiro, representação, gigantes, não estruturados</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>(2 aulas)</p>
+          <p>BONDÍA, Jorge L. Notas sobre a experiência e o saber de experiência. In: Revista Brasileira de Educação, Campinas, n.19, p. 20-28, 2002. Disponível em: <a href="http://www.scielo.br/pdf/rbedu/n19/n19a02.pdf">http://www.scielo.br/pdf/rbedu/n19/n19a02.pdf</a>. Acesso em: 14 jul. 2024.</p>
+          <p>Vídeo de apoio: Território do Brincar | Série de MiniDocs | Brincadeiras com petecas nas diversas regiões do Brasil: acesse este vídeo que mostra o mesmo brinquedo e como é construído e utilizado em diferentes regiões do país. <a href="https://www.youtube.com/watch?v=wXEjjIUOCck">https://www.youtube.com/watch?v=wXEjjIUOCck</a></p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 10</span>
+            <time class="date" datetime="2025-09-25">25/09</time>
+            <span class="pill">Apresentação dos jogos construídos – Atividade no pátio e avaliação entre pares</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>(2 aulas)</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 11</span>
+            <time class="date" datetime="2025-10-02">02/10</time>
+            <span class="pill">Visita a espaços lúdicos e brinquedotecas (Brasital, SESC, escolas, museu)</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>Apresentação da proposta sobre planejamento de sequência didática com jogos e brincadeirasConexão com a disciplina de Didática (2 aulas)</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 12</span>
+            <time class="date" datetime="2025-10-09">09/10</time>
+            <span class="pill">Semana da Pedagogia – Atividade com a comunidade: jogos e brincadeiras</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>Atividade de extensão (2h / 1 aula) (2 aulas)</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 13</span>
+            <time class="date" datetime="2025-10-16">16/10</time>
+            <span class="pill">Compartilhamento das observações das visitas – roda de conversa e registros</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>(2 aulas) . Orientações sobre os trabalhos finais de curso.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 14</span>
+            <time class="date" datetime="2025-10-23">23/10</time>
+            <span class="pill">Construção de brinquedos e propostas brincantes para diferentes contextos</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>(2 aulas)</p>
+          <p>PEDROZA, Regina L. S. Aprendizagem e subjetividade: uma construção a partir do brincar. In: Revista do Departamento de Psicologia da UFF, vol. 17, n. 2, p. 61-76, 2005. Disponível em: <a href="http://www.scielo.br/pdf/rdpsi/v17n2/v17n2a06.pdf">http://www.scielo.br/pdf/rdpsi/v17n2/v17n2a06.pdf</a>. Acesso em: 14 jul. 2024.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 15</span>
+            <time class="date" datetime="2025-10-30">30/10</time>
+            <span class="pill">Brincadeiras tradicionais e regionais – vivência e contextualização. Debate com a escola Odé Kayodé</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>(2 aulas)</p>
+          <p>O Brincar na BNCC e nas nossas diretrizes curriculares Educacionais</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aulas 16 e 17</span>
+            <time class="date" datetime="2025-11">Novembro (data a definir)</time>
+            <span class="pill">Visita técnica a espaços educativos / culturais com proposta lúdica</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>Atividade externa (4 aulas)</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 18</span>
+            <time class="date" datetime="2025-11-06">06/11</time>
+            <span class="pill">Brincadeiras com música e expressão corporal – oficina musical</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>(2 aulas)</p>
+          <p>Material complementar para consulta: Palestra semana da Pedagogia em Sorocaba  - Música e Arte como ferramenta pedagógica com crianças perifericas e indígenas   <a href="https://drive.google.com/file/d/18BH3DzLkF4ZPKd-x7dutCiMbE4ZUHm8s/view?usp=sharing">https://drive.google.com/file/d/18BH3DzLkF4ZPKd-x7dutCiMbE4ZUHm8s/view?usp=sharing</a></p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 19</span>
+            <time class="date" datetime="2025-11-13">13/11</time>
+            <span class="pill">Aula on-line - orientação dos trabalhos finais</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>(2 aulas)</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 20</span>
+            <time class="date" datetime="2025-11-18">18 ou 19/11</time>
+            <span class="pill">Mostra de Arte – Atividade Interativa com jogos/brinquedos</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p>Atividade de extensão (2 aulas)</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 20</span>
+            <time class="date" datetime="2025-11-27">27/11</time>
+            <span class="pill">Apresentação dos trabalhos finais e roda de conversa</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content">
+          <p></p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 21</span>
+            <time class="date" datetime="2025-12-04">04-12</time>
+            <span class="pill">Reposição e/ou recuperação paralela</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content"></div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="title">Aula 22</span>
+            <time class="date" datetime="2025-12-11">11-12</time>
+            <span class="pill">Reposição e/ou recuperação paralela</span>
+          </div>
+          <span class="caret" aria-hidden="true">▸</span>
+        </summary>
+        <div class="content"></div>
+      </details>
+    </section>
+
+    <section class="section" aria-labelledby="avaliacao">
+      <h2 id="avaliacao">📝 Avaliação</h2>
+      <ul class="eval-list">
+        <li>Contribuições ao portfólio do grupo – até 10,0 pontos</li>
+        <li>Participação individual na célula e contribuições ao grupo – até 10,0 pontos</li>
+        <li>Média das atividades propostas ao longo do curso – até 10,0 pontos</li>
+        <li>Proposta de materiais pedagógicos lúdicos e sequência didática – até 10,0 pontos</li>
+        <li>Apresentação das propostas finais – até 10,0 pontos</li>
+        <li>Ponto adicional: participação em eventos e atividades extras – 0 a 2,0 pontos</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <script>
+    // melhora a área clicável do summary para leitores de tela e teclado
+    document.querySelectorAll('summary').forEach(s => {
+      s.setAttribute('role','button');
+      s.setAttribute('aria-expanded', s.parentElement.hasAttribute('open') ? 'true' : 'false');
+      s.addEventListener('click', () => {
+        const open = s.parentElement.hasAttribute('open');
+        s.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      s.addEventListener('keyup', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){ s.click(); }
+      });
+    });
+  </script>
+</body>
+</html>
