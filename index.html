@@ -13,8 +13,8 @@
     --surface: #FFFFFF;
     --surface-2: #F3EAD8;
     --ink: #26211D;
-    --ink-soft: #675E53;
-    --ink-faint: #948A7B;
+    --ink-soft: #5C5346;
+    --ink-faint: #726856;
     --line: #E3D6BC;
     --line-strong: #CDBB98;
 
@@ -48,7 +48,7 @@
       --surface-2: #2A241C;
       --ink: #F1E9DA;
       --ink-soft: #C3B7A2;
-      --ink-faint: #8C806D;
+      --ink-faint: #948875;
       --line: #3B3226;
       --line-strong: #4E4330;
 
@@ -78,7 +78,7 @@
     --surface-2: #2A241C;
     --ink: #F1E9DA;
     --ink-soft: #C3B7A2;
-    --ink-faint: #8C806D;
+    --ink-faint: #948875;
     --line: #3B3226;
     --line-strong: #4E4330;
 
@@ -185,29 +185,6 @@
   .question-card .q-label{ font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--teal-ink); }
   .question-card p{ font-family:var(--font-display); font-size: clamp(1.15rem,2.4vw,1.5rem); font-weight:500; color:var(--ink); margin-top:.5rem; max-width:44ch; line-height:1.35;}
 
-  .q-toggle{
-    margin-top:1.2rem; display:inline-flex; align-items:center; gap:.55rem; background:var(--surface);
-    border:1px solid var(--line-strong); color:var(--teal-ink); font-family:var(--font-body); font-weight:700;
-    font-size:.82rem; padding:.45rem .9rem .45rem .55rem; border-radius:999px; cursor:pointer;
-    transition: background .15s ease, transform .1s ease, border-color .15s ease;
-  }
-  .q-toggle:hover{ background:var(--teal-tint); border-color:var(--teal); transform: translateY(-1px); }
-  .q-toggle-icon{
-    display:inline-flex; align-items:center; justify-content:center; width:1.3rem; height:1.3rem; flex:none;
-    border-radius:50%; background:var(--teal); color:#fff; font-size:.95rem; line-height:1;
-    transition: transform .2s ease;
-  }
-  .q-toggle[aria-expanded="true"] .q-toggle-icon{ transform: rotate(45deg); }
-  .q-alt{
-    margin-top:1.1rem; padding-top:1.1rem; border-top:1px solid var(--line);
-    display:flex; flex-direction:column; gap:.8rem;
-  }
-  .q-alt-item{
-    font-family:var(--font-display); font-size:1rem; font-weight:500; color:var(--ink-soft);
-    max-width:56ch; margin:0; line-height:1.42; padding-left:1.1rem; position:relative;
-  }
-  .q-alt-item::before{ content:"—"; position:absolute; left:0; color:var(--teal); }
-
   /* ---------- Section shell ---------- */
   .section{ padding: clamp(2.2rem,5vw,3.4rem) 0; border-top:1px solid var(--line); }
   .section-head{ display:flex; flex-direction:column; gap:.5rem; margin-bottom:1.8rem; max-width:70ch; }
@@ -216,14 +193,28 @@
   .section-lede{ color:var(--ink-soft); font-size:1rem; }
 
   /* ---------- Objetivos ---------- */
-  .obj-grid{ display:grid; grid-template-columns: 1.1fr 1.4fr; gap:1.8rem; align-items:start;}
+  .obj-grid{ display:grid; grid-template-columns: 1.1fr 1.4fr; gap:1.8rem; align-items:start; transition: grid-template-columns .2s ease;}
+  .obj-grid.is-collapsed{ grid-template-columns: 1fr; max-width:60ch; }
   @media (max-width: 800px){ .obj-grid{ grid-template-columns:1fr; } }
   .obj-geral{
+    display:block; width:100%; text-align:left; font-family:var(--font-body); cursor:pointer;
     background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:1.5rem;
-    box-shadow:var(--shadow);
+    box-shadow:var(--shadow); transition: border-color .15s ease, background .15s ease;
   }
+  .obj-geral:hover{ border-color:var(--line-strong); background:var(--teal-tint); }
   .obj-geral h3{ font-size:1rem; color:var(--teal-ink); margin-bottom:.6rem; }
   .obj-geral p{ font-size:1.08rem; font-family:var(--font-display); font-weight:500; color:var(--ink); max-width:none;}
+  .obj-toggle-hint{
+    margin-top:1.1rem; padding-top:1rem; border-top:1px solid var(--line);
+    display:flex; align-items:center; gap:.6rem; font-size:.82rem; font-weight:700; color:var(--teal-ink);
+  }
+  /* Shared expand/collapse chevron, used on the objectives toggle and each week header */
+  .week-chevron{
+    display:inline-flex; align-items:center; justify-content:center; width:1.5rem; height:1.5rem; flex:none;
+    border-radius:50%; background:var(--teal); color:#fff; font-size:1.05rem; line-height:1;
+    transition: transform .2s ease;
+  }
+  [aria-expanded="true"] .week-chevron{ transform: rotate(45deg); }
   ol.obj-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.65rem; counter-reset:obj;}
   ol.obj-list li{
     counter-increment:obj; display:flex; gap:.8rem; align-items:baseline;
@@ -340,21 +331,36 @@
   /* ---------- Cronograma ---------- */
   .timeline{ display:flex; flex-direction:column; gap:1rem; }
   .week{
-    display:grid; grid-template-columns: 5.5rem 1fr; gap:1.2rem; border:1px solid var(--line);
-    background:var(--surface); border-radius:16px; padding:1.3rem 1.4rem; box-shadow:var(--shadow);
+    border:1px solid var(--line); background:var(--surface); border-radius:16px;
+    box-shadow:var(--shadow); scroll-margin-top:4.2rem; overflow:hidden;
+    transition: border-color .15s ease, box-shadow .15s ease;
   }
-  @media (max-width:640px){ .week{ grid-template-columns:1fr; } }
+  .week-header{
+    width:100%; display:grid; grid-template-columns: 5.5rem 1fr auto; gap:1.2rem; align-items:center;
+    background:none; border:none; padding:1.3rem 1.4rem; cursor:pointer; text-align:left; font-family:var(--font-body);
+  }
+  .week-header:hover{ background:var(--surface-2); }
+  @media (max-width:640px){ .week-header{ grid-template-columns: 3.6rem 1fr auto; gap:.8rem; padding:1.1rem; } }
   .week .w-badge{ display:flex; flex-direction:column; align-items:flex-start; gap:.3rem; }
   .week .w-num{ font-family:var(--font-display); font-weight:700; font-size:1.8rem; color:var(--teal); line-height:1; }
   .week .w-label{ font-size:.7rem; text-transform:uppercase; color:var(--ink-faint); font-weight:700; letter-spacing:.05em;}
-  .week h4{ font-size:1.05rem; margin-bottom:.5rem; }
+  .week-header-text{ display:flex; flex-direction:column; gap:.3rem; min-width:0; }
+  .week-header-text h4{ font-size:1.05rem; }
+  .week-teaser{ font-size:.85rem; color:var(--ink-soft); }
+  .week-detail{ padding:0 1.4rem 1.4rem 1.4rem; }
+  @media (max-width:640px){ .week-detail{ padding:0 1.1rem 1.1rem 1.1rem; } }
   .week .w-text{ font-size:.9rem; color:var(--ink-soft); margin-bottom:.9rem; }
   .week .w-cols{ display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; }
   @media (max-width:640px){ .week .w-cols{ grid-template-columns:1fr; } }
   .w-block .w-block-title{ font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; font-weight:700; color:var(--ink-faint); margin-bottom:.5rem;}
   .w-block ul{ margin:0; padding-left:1.1rem; display:flex; flex-direction:column; gap:.35rem;}
   .w-block li{ font-size:.85rem; color:var(--ink-soft);}
-  .week.is-current{ border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-tint), var(--shadow); }
+  .week.is-open{ border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-tint), var(--shadow); }
+
+  /* Etapas comuns — clickable rows that open the matching week above */
+  #etapas-table tbody tr[data-week]{ cursor:pointer; transition: background .12s ease; }
+  #etapas-table tbody tr[data-week]:hover{ background: var(--teal-tint); }
+  .row-arrow{ margin-left:.5rem; color:var(--teal); font-weight:700; }
 
   /* ---------- Acompanhamento / Visitas ---------- */
   .roteiro-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.6rem; }
@@ -370,12 +376,6 @@
   .visita-card h4{ font-size:.95rem; margin-bottom:.7rem; color:var(--teal-ink); }
   .visita-card ul{ margin:0; padding-left:1.1rem; display:flex; flex-direction:column; gap:.4rem;}
   .visita-card li{ font-size:.85rem; color:var(--ink-soft); }
-
-  .example-box{
-    margin-top:1.3rem; border:1px dashed var(--line-strong); border-radius:12px; padding:1rem 1.2rem;
-    background:var(--surface-2); font-size:.87rem; color:var(--ink-soft);
-  }
-  .example-box b{ color:var(--ink); }
 
   .alert{
     display:flex; gap:.85rem; align-items:flex-start; background:var(--coral-tint); border:1px solid var(--line);
@@ -434,7 +434,7 @@
     <nav class="toc" aria-label="Sumário">
       <a href="#objetivos">Objetivos</a>
       <a href="#organizacao">Organização</a>
-      <a href="#grupos">Os 4 eixos</a>
+      <a href="#grupos">Grupos</a>
       <a href="#eixos">Eixos</a>
       <a href="#etapas">Etapas</a>
       <a href="#cronograma">Cronograma</a>
@@ -463,14 +463,6 @@
     <div class="question-card">
       <span class="q-label">Questão norteadora</span>
       <p>Como podemos articular teorias críticas do brincar para conceber espaços, formações continuadas e materiais pedagógicos capazes de desemparedar as infâncias e transformar a cultura escolar?</p>
-      <button class="q-toggle" type="button" aria-expanded="false" aria-controls="q-alt" title="Ver outras formulações da questão norteadora">
-        <span class="q-toggle-icon" aria-hidden="true">+</span>
-        <span class="q-toggle-label">Outras formulações da questão</span>
-      </button>
-      <div class="q-alt" id="q-alt" hidden>
-        <p class="q-alt-item">Como podemos transformar as concepções de infância e desenvolvimento em projetos culturais, espaços brincantes, oficinas e materiais didáticos que resgatem a autoria e a potência do brincar na prática docente?</p>
-        <p class="q-alt-item">Como podemos investigar as práticas lúdicas contemporâneas e mobilizar saberes teóricos para propor ações formativas, intervenções espaciais e projetos culturais que fortaleçam os territórios brincantes da infância?</p>
-      </div>
     </div>
   </section>
 
@@ -500,12 +492,13 @@
       <span class="kicker">1 · Objetivos</span>
       <h2>Objetivo geral e objetivos específicos</h2>
     </div>
-    <div class="obj-grid">
-      <div class="obj-geral">
+    <div class="obj-grid is-collapsed" id="obj-grid">
+      <button class="obj-geral" id="obj-toggle" type="button" aria-expanded="false" aria-controls="obj-list">
         <h3>Objetivo geral</h3>
         <p>Investigar jogos, brinquedos, brincadeiras e espaços brincantes para construir propostas pedagógicas e culturais contextualizadas, inclusivas e relacionadas à realidade da turma e da instituição.</p>
-      </div>
-      <ol class="obj-list">
+        <span class="obj-toggle-hint"><span class="week-chevron" aria-hidden="true">+</span>Ver os 10 objetivos específicos</span>
+      </button>
+      <ol class="obj-list" id="obj-list" hidden>
         <li><span>Conceituar e diferenciar jogos, brinquedos, brincadeiras, brinquedotecas e espaços brincantes.</span></li>
         <li><span>Investigar como esses elementos aparecem em escolas, instituições culturais, bibliotecas, centros comunitários, Sescs, museus, praças e outros espaços.</span></li>
         <li><span>Conhecer práticas de diferentes regiões do Brasil e de outros países.</span></li>
@@ -670,17 +663,17 @@
     <div class="section-head">
       <span class="kicker">5 · Etapas comuns de trabalho</span>
       <h2>O mesmo percurso para todos os grupos</h2>
-      <p class="section-lede">Em cada aula, os grupos informam em qual etapa estão, que evidências já produziram e qual será o próximo passo.</p>
+      <p class="section-lede">Em cada aula, os grupos informam em qual etapa estão, que evidências já produziram e qual será o próximo passo. Clique em uma etapa para abrir o detalhamento da semana correspondente.</p>
     </div>
     <div class="table-scroll">
       <table id="etapas-table">
         <thead><tr><th>Etapa</th><th>Pergunta orientadora</th><th>Evidência esperada</th></tr></thead>
         <tbody>
-          <tr data-date="09.09"><td>1. Delimitar <span class="date-tag">(09.09)</span></td><td>O que exatamente investigaremos e por quê?</td><td>Questão do grupo, objetivo, subperguntas, divisão de funções e plano de trabalho.</td></tr>
-          <tr data-date="23.09"><td>2. Conceituar <span class="date-tag">(23.09)</span></td><td>O que os autores e as fontes dizem sobre o tema?</td><td>Mapa conceitual, fichamentos e bibliografia inicial.</td></tr>
-          <tr data-date="30.09"><td>3. Investigar <span class="date-tag">(30.09)</span></td><td>O que encontramos em escolas, instituições, territórios e registros culturais?</td><td>Roteiros, observações, entrevistas, imagens autorizadas, descrições, vídeos e documentos.</td></tr>
-          <tr data-date="07.10"><td>4. Analisar <span class="date-tag">(07.10)</span></td><td>O que os dados indicam? Que relações, diferenças, tensões ou possibilidades aparecem?</td><td>Registro das descobertas, análises e reflexões; continuidade da proposta.</td></tr>
-          <tr data-date="21.10"><td>5. Propor <span class="date-tag">(21.10)</span></td><td>O que podemos recomendar ou criar para a prática pedagógica e a brinquedoteca?</td><td>Proposta, vivência, instalação e plano de apresentação.</td></tr>
+          <tr data-date="09.09" data-week="1" tabindex="0" role="button" title="Ver detalhamento da Semana 1"><td>1. Delimitar <span class="date-tag">(09.09)</span><span class="row-arrow" aria-hidden="true">→</span></td><td>O que exatamente investigaremos e por quê?</td><td>Questão do grupo, objetivo, subperguntas, divisão de funções e plano de trabalho.</td></tr>
+          <tr data-date="23.09" data-week="2" tabindex="0" role="button" title="Ver detalhamento da Semana 2"><td>2. Conceituar <span class="date-tag">(23.09)</span><span class="row-arrow" aria-hidden="true">→</span></td><td>O que os autores e as fontes dizem sobre o tema?</td><td>Mapa conceitual, fichamentos e bibliografia inicial.</td></tr>
+          <tr data-date="30.09" data-week="3" tabindex="0" role="button" title="Ver detalhamento da Semana 3"><td>3. Investigar <span class="date-tag">(30.09)</span><span class="row-arrow" aria-hidden="true">→</span></td><td>O que encontramos em escolas, instituições, territórios e registros culturais?</td><td>Roteiros, observações, entrevistas, imagens autorizadas, descrições, vídeos e documentos.</td></tr>
+          <tr data-date="07.10" data-week="4" tabindex="0" role="button" title="Ver detalhamento da Semana 4"><td>4. Analisar <span class="date-tag">(07.10)</span><span class="row-arrow" aria-hidden="true">→</span></td><td>O que os dados indicam? Que relações, diferenças, tensões ou possibilidades aparecem?</td><td>Registro das descobertas, análises e reflexões; continuidade da proposta.</td></tr>
+          <tr data-date="21.10" data-week="5" tabindex="0" role="button" title="Ver detalhamento da Semana 5"><td>5. Propor <span class="date-tag">(21.10)</span><span class="row-arrow" aria-hidden="true">→</span></td><td>O que podemos recomendar ou criar para a prática pedagógica e a brinquedoteca?</td><td>Proposta, vivência, instalação e plano de apresentação.</td></tr>
           <tr><td>6. Avaliar</td><td>Como revisar o que propusemos e receber contribuições?</td><td>Resumo de uma página e apresentação final.</td></tr>
         </tbody>
       </table>
@@ -691,12 +684,19 @@
     <div class="section-head">
       <span class="kicker">6 · Cronograma</span>
       <h2>As cinco semanas do projeto</h2>
+      <p class="section-lede">Clique em uma semana para ver o detalhamento — ou clique em uma etapa da seção anterior para abrir a semana correspondente.</p>
     </div>
     <div class="timeline" id="timeline">
       <div class="week" data-week="1">
-        <div class="w-badge"><span class="w-num">01</span><span class="w-label">Semana</span></div>
-        <div>
-          <h4>Formação, delimitação e planejamento</h4>
+        <button class="week-header" type="button" aria-expanded="false" aria-controls="week-detail-1">
+          <span class="w-badge"><span class="w-num">01</span><span class="w-label">Semana</span></span>
+          <span class="week-header-text">
+            <h4>Formação, delimitação e planejamento</h4>
+            <span class="week-teaser">Apresentação do projeto, formação dos grupos e primeiras definições.</span>
+          </span>
+          <span class="week-chevron" aria-hidden="true">+</span>
+        </button>
+        <div class="week-detail" id="week-detail-1" hidden>
           <p class="w-text">A turma é apresentada ao projeto e à questão norteadora. Os grupos são formados e cada um escolhe uma pergunta específica relacionada ao seu tema. Os subgrupos distribuem funções, combinam formas de comunicação e definem o que será investigado diretamente e o que será estudado por meio de fontes.</p>
           <div class="w-cols">
             <div class="w-block"><div class="w-block-title">Entrega processual</div><ul>
@@ -717,9 +717,15 @@
       </div>
 
       <div class="week" data-week="2">
-        <div class="w-badge"><span class="w-num">02</span><span class="w-label">Semana</span></div>
-        <div>
-          <h4>Conceitos, referências e primeiros dados</h4>
+        <button class="week-header" type="button" aria-expanded="false" aria-controls="week-detail-2">
+          <span class="w-badge"><span class="w-num">02</span><span class="w-label">Semana</span></span>
+          <span class="week-header-text">
+            <h4>Conceitos, referências e primeiros dados</h4>
+            <span class="week-teaser">Estudo de conceitos e autores; início da pesquisa de campo.</span>
+          </span>
+          <span class="week-chevron" aria-hidden="true">+</span>
+        </button>
+        <div class="week-detail" id="week-detail-2" hidden>
           <p class="w-text">Os grupos estudam as definições e os debates relacionados ao tema, retomando autores do semestre anterior e selecionando autores contemporâneos. Também iniciam a pesquisa de campo, as visitas ou a análise de registros de instituições e práticas.</p>
           <div class="w-cols">
             <div class="w-block"><div class="w-block-title">Entrega processual</div><ul>
@@ -736,9 +742,15 @@
       </div>
 
       <div class="week" data-week="3">
-        <div class="w-badge"><span class="w-num">03</span><span class="w-label">Semana</span></div>
-        <div>
-          <h4>Investigar</h4>
+        <button class="week-header" type="button" aria-expanded="false" aria-controls="week-detail-3">
+          <span class="w-badge"><span class="w-num">03</span><span class="w-label">Semana</span></span>
+          <span class="week-header-text">
+            <h4>Investigar</h4>
+            <span class="week-teaser">Organização dos dados e visita a um espaço educativo ou cultural.</span>
+          </span>
+          <span class="week-chevron" aria-hidden="true">+</span>
+        </button>
+        <div class="week-detail" id="week-detail-3" hidden>
           <p class="w-text">Os grupos organizam os dados e comparam diferentes contextos. Devem visitar um espaço educativo ou cultural para conhecer uma proposta relacionada ao brincar, aos jogos e às brincadeiras.</p>
           <div class="w-cols">
             <div class="w-block"><div class="w-block-title">Entrega processual</div><ul>
@@ -756,9 +768,15 @@
       </div>
 
       <div class="week" data-week="4">
-        <div class="w-badge"><span class="w-num">04</span><span class="w-label">Semana</span></div>
-        <div>
-          <h4>Síntese, apresentação e avaliação</h4>
+        <button class="week-header" type="button" aria-expanded="false" aria-controls="week-detail-4">
+          <span class="w-badge"><span class="w-num">04</span><span class="w-label">Semana</span></span>
+          <span class="week-header-text">
+            <h4>Síntese, apresentação e avaliação</h4>
+            <span class="week-teaser">Síntese dos achados e consolidação do projeto da brinquedoteca.</span>
+          </span>
+          <span class="week-chevron" aria-hidden="true">+</span>
+        </button>
+        <div class="week-detail" id="week-detail-4" hidden>
           <p class="w-text">Os grupos finalizam o resumo de uma página, o portfólio de processo, as fichas do catálogo e a apresentação. O Grupo 4 consolida o projeto da brinquedoteca com as contribuições dos demais grupos.</p>
           <div class="w-cols">
             <div class="w-block"><div class="w-block-title">Entrega processual</div><ul>
@@ -774,9 +792,15 @@
       </div>
 
       <div class="week" data-week="5">
-        <div class="w-badge"><span class="w-num">05</span><span class="w-label">Semana</span></div>
-        <div>
-          <h4>Apresentação</h4>
+        <button class="week-header" type="button" aria-expanded="false" aria-controls="week-detail-5">
+          <span class="w-badge"><span class="w-num">05</span><span class="w-label">Semana</span></span>
+          <span class="week-header-text">
+            <h4>Apresentação</h4>
+            <span class="week-teaser">Organização das apresentações finais e compartilhamentos.</span>
+          </span>
+          <span class="week-chevron" aria-hidden="true">+</span>
+        </button>
+        <div class="week-detail" id="week-detail-5" hidden>
           <p class="w-text">Organização das apresentações e compartilhamentos, com possibilidade de inscrição para a Mostra de Artes.</p>
           <div class="w-cols">
             <div class="w-block"><div class="w-block-title">Entrega final</div><ul>
@@ -846,10 +870,6 @@
       </div>
     </div>
 
-    <div class="example-box">
-      Os registros devem distinguir claramente descrição e interpretação. Por exemplo: <b>"havia caixas de madeira ao lado do tapete"</b> é uma descrição; <b>"as caixas favoreciam brincadeiras de construção"</b> é uma interpretação, que deve ser sustentada por observação ou fala dos participantes.
-    </div>
-
     <div class="alert">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
       <p>Não se deve fotografar ou filmar crianças, nem divulgar suas imagens, sem as autorizações institucionais e familiares cabíveis. Quando não houver autorização, podem ser utilizados registros do ambiente sem identificação de pessoas, desenhos, esquemas, descrições e fotografias de materiais.</p>
@@ -877,7 +897,7 @@
     </div>
     <div class="note-box" style="background:var(--gold-tint);">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"/></svg>
-      <p><b>Ponto adicional:</b> relatos sistematizados de estágio, no formato de relato de experiência e/ou artigo científico, a respeito das propostas desenvolvidas ao longo do semestre relacionadas aos temas da disciplina.</p>
+      <p><b>Ponto adicional (até 2 pontos):</b> relatos sistematizados de estágio, no formato de relato de experiência e/ou artigo científico, a respeito das propostas desenvolvidas ao longo do semestre relacionadas aos temas da disciplina, e/ou participação ativa em eventos de curricularização da extensão.</p>
     </div>
   </section>
 
@@ -984,15 +1004,6 @@
 
 <script>
   (function(){
-    var qToggle = document.querySelector('.q-toggle');
-    if(qToggle){
-      qToggle.addEventListener('click', function(){
-        var expanded = qToggle.getAttribute('aria-expanded') === 'true';
-        qToggle.setAttribute('aria-expanded', String(!expanded));
-        document.getElementById('q-alt').hidden = expanded;
-      });
-    }
-
     var tabs = document.querySelectorAll('.group-tab');
     var panels = document.querySelectorAll('.group-panel');
     tabs.forEach(function(tab){
@@ -1028,6 +1039,59 @@
         firstCell.appendChild(badge);
       }
     }catch(e){}
+
+    // Objetivos: click the general objective to reveal the specific ones.
+    var objToggle = document.getElementById('obj-toggle');
+    var objList = document.getElementById('obj-list');
+    var objGrid = document.getElementById('obj-grid');
+    if(objToggle && objList && objGrid){
+      objToggle.addEventListener('click', function(){
+        var expanded = objToggle.getAttribute('aria-expanded') === 'true';
+        objToggle.setAttribute('aria-expanded', String(!expanded));
+        objList.hidden = expanded;
+        objGrid.classList.toggle('is-collapsed', expanded);
+      });
+    }
+
+    // Cronograma: each week is a collapsed accordion item; opening one closes the others.
+    var weeks = document.querySelectorAll('.week');
+    function openWeek(weekEl, scroll){
+      weeks.forEach(function(w){
+        var header = w.querySelector('.week-header');
+        var detail = w.querySelector('.week-detail');
+        var isTarget = w === weekEl;
+        header.setAttribute('aria-expanded', String(isTarget));
+        detail.hidden = !isTarget;
+        w.classList.toggle('is-open', isTarget);
+      });
+      if(scroll){ weekEl.scrollIntoView({behavior:'smooth', block:'start'}); }
+    }
+    weeks.forEach(function(w){
+      var header = w.querySelector('.week-header');
+      header.addEventListener('click', function(){
+        var alreadyOpen = header.getAttribute('aria-expanded') === 'true';
+        if(alreadyOpen){
+          header.setAttribute('aria-expanded', 'false');
+          w.querySelector('.week-detail').hidden = true;
+          w.classList.remove('is-open');
+        } else {
+          openWeek(w, false);
+        }
+      });
+    });
+
+    // Etapas comuns: clicking a row opens the matching week in the Cronograma section.
+    var etapaRows = document.querySelectorAll('#etapas-table tbody tr[data-week]');
+    etapaRows.forEach(function(row){
+      var weekNum = row.getAttribute('data-week');
+      var targetWeek = document.querySelector('.week[data-week="' + weekNum + '"]');
+      if(!targetWeek){ return; }
+      function activate(){ openWeek(targetWeek, true); }
+      row.addEventListener('click', activate);
+      row.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); activate(); }
+      });
+    });
   })();
 </script>
 
