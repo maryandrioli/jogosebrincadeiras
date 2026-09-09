@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogos, Brinquedos e Brincadeiras</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+  :root{
+    --bg: #FAF5EA;
+    --surface: #FFFFFF;
+    --surface-2: #F3EAD8;
+    --ink: #26211D;
+    --ink-soft: #675E53;
+    --ink-faint: #948A7B;
+    --line: #E3D6BC;
+    --line-strong: #CDBB98;
+
+    --teal: #3E8E86;
+    --teal-tint: #E4F0EE;
+    --teal-ink: #1F4A46;
+
+    --orange: #D97C3B;
+    --orange-tint: #FBEBDD;
+    --orange-ink: #7A3F16;
+
+    --gold: #D9A233;
+    --gold-tint: #FBF0D9;
+    --gold-ink: #7A550F;
+
+    --coral: #C4543F;
+    --coral-tint: #F8E4DE;
+    --coral-ink: #7A2C1D;
+
+    --accent: #3E8E86;
+    --shadow: 0 1px 2px rgba(38,33,29,.06), 0 8px 24px -12px rgba(38,33,29,.18);
+
+    --font-display: 'Fraunces', Georgia, 'Iowan Old Style', serif;
+    --font-body: 'Karla', 'Segoe UI', Roboto, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #1B1712;
+      --surface: #221D17;
+      --surface-2: #2A241C;
+      --ink: #F1E9DA;
+      --ink-soft: #C3B7A2;
+      --ink-faint: #8C806D;
+      --line: #3B3226;
+      --line-strong: #4E4330;
+
+      --teal: #5FADA4;
+      --teal-tint: #223531;
+      --teal-ink: #B7E4DD;
+
+      --orange: #E9985A;
+      --orange-tint: #3A2A1C;
+      --orange-ink: #F3CBA3;
+
+      --gold: #E6BC5C;
+      --gold-tint: #3A2F17;
+      --gold-ink: #F2DBA0;
+
+      --coral: #E17E68;
+      --coral-tint: #3B241D;
+      --coral-ink: #F2C1B3;
+
+      --accent: #5FADA4;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #1B1712;
+    --surface: #221D17;
+    --surface-2: #2A241C;
+    --ink: #F1E9DA;
+    --ink-soft: #C3B7A2;
+    --ink-faint: #8C806D;
+    --line: #3B3226;
+    --line-strong: #4E4330;
+
+    --teal: #5FADA4;
+    --teal-tint: #223531;
+    --teal-ink: #B7E4DD;
+
+    --orange: #E9985A;
+    --orange-tint: #3A2A1C;
+    --orange-ink: #F3CBA3;
+
+    --gold: #E6BC5C;
+    --gold-tint: #3A2F17;
+    --gold-ink: #F2DBA0;
+
+    --coral: #E17E68;
+    --coral-tint: #3B241D;
+    --coral-ink: #F2C1B3;
+
+    --accent: #5FADA4;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.01ms !important; transition-duration:.01ms !important;}
+  }
+
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    font-weight:600;
+    color:var(--ink);
+    text-wrap:balance;
+    margin:0;
+  }
+  p{margin:0 0 .9em; max-width:66ch;}
+  p:last-child{margin-bottom:0;}
+  a{color:var(--teal-ink, var(--teal)); text-decoration-thickness: 1px; text-underline-offset: 2px;}
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
+    outline: 2px solid var(--accent); outline-offset: 2px; border-radius:4px;
+  }
+  ::selection{ background: var(--gold-tint); color: var(--ink); }
+
+  .wrap{ max-width: 1080px; margin: 0 auto; padding: 0 clamp(1.1rem, 4vw, 2.5rem); }
+
+  /* ---------- Nav ---------- */
+  .topbar{
+    position: sticky; top:0; z-index:40;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px) saturate(1.1);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:1080px; margin:0 auto; padding: .7rem clamp(1.1rem, 4vw, 2.5rem);
+    display:flex; align-items:center; gap:1.4rem;
+  }
+  .brand{ font-family:var(--font-display); font-weight:700; font-size:1rem; white-space:nowrap; color:var(--ink); flex:none;}
+  .brand em{ font-style:normal; color:var(--teal); }
+  nav.toc{ display:flex; gap: 1.1rem; overflow-x:auto; scrollbar-width:none; }
+  nav.toc::-webkit-scrollbar{ display:none; }
+  nav.toc a{
+    color: var(--ink-soft); text-decoration:none; font-size:.86rem; font-weight:600;
+    white-space:nowrap; padding:.3rem .1rem; border-bottom:2px solid transparent;
+  }
+  nav.toc a:hover{ color:var(--ink); border-color:var(--line-strong); }
+
+  section{ scroll-margin-top: 4.2rem; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding: clamp(2.4rem,6vw,4.2rem) 0 clamp(2rem,5vw,3rem); position:relative; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:.5rem;
+    font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    color: var(--teal-ink); background: var(--teal-tint); border:1px solid var(--line);
+    padding: .35rem .7rem; border-radius: 999px; margin-bottom:1.1rem;
+  }
+  .eyebrow .dot{ width:.4rem; height:.4rem; border-radius:50%; background:var(--teal); flex:none; }
+  h1.title{ font-size: clamp(2.1rem, 4.4vw, 3.1rem); line-height:1.08; max-width: 18ch; }
+  .hero-sub{ margin-top:1rem; font-size:1.05rem; color:var(--ink-soft); max-width:60ch; }
+  .hero-meta{ display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.6rem; }
+  .meta-pill{
+    background:var(--surface); border:1px solid var(--line); border-radius:12px;
+    padding:.6rem .9rem; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:.1rem; min-width:9rem;
+  }
+  .meta-pill .k{ font-size:.7rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); font-weight:700;}
+  .meta-pill .v{ font-size:.92rem; color:var(--ink); font-weight:600; }
+
+  .question-card{
+    margin-top:2rem; background: linear-gradient(155deg, var(--surface), var(--teal-tint));
+    border:1px solid var(--line); border-radius:18px; padding: clamp(1.3rem,3vw,2rem);
+    box-shadow: var(--shadow); position:relative;
+  }
+  .question-card .q-label{ font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--teal-ink); }
+  .question-card p{ font-family:var(--font-display); font-size: clamp(1.15rem,2.4vw,1.5rem); font-weight:500; color:var(--ink); margin-top:.5rem; max-width:44ch; line-height:1.35;}
+
+  .q-toggle{
+    margin-top:1.2rem; display:inline-flex; align-items:center; gap:.55rem; background:var(--surface);
+    border:1px solid var(--line-strong); color:var(--teal-ink); font-family:var(--font-body); font-weight:700;
+    font-size:.82rem; padding:.45rem .9rem .45rem .55rem; border-radius:999px; cursor:pointer;
+    transition: background .15s ease, transform .1s ease, border-color .15s ease;
+  }
+  .q-toggle:hover{ background:var(--teal-tint); border-color:var(--teal); transform: translateY(-1px); }
+  .q-toggle-icon{
+    display:inline-flex; align-items:center; justify-content:center; width:1.3rem; height:1.3rem; flex:none;
+    border-radius:50%; background:var(--teal); color:#fff; font-size:.95rem; line-height:1;
+    transition: transform .2s ease;
+  }
+  .q-toggle[aria-expanded="true"] .q-toggle-icon{ transform: rotate(45deg); }
+  .q-alt{
+    margin-top:1.1rem; padding-top:1.1rem; border-top:1px solid var(--line);
+    display:flex; flex-direction:column; gap:.8rem;
+  }
+  .q-alt-item{
+    font-family:var(--font-display); font-size:1rem; font-weight:500; color:var(--ink-soft);
+    max-width:56ch; margin:0; line-height:1.42; padding-left:1.1rem; position:relative;
+  }
+  .q-alt-item::before{ content:"—"; position:absolute; left:0; color:var(--teal); }
+
+  /* ---------- Section shell ---------- */
+  .section{ padding: clamp(2.2rem,5vw,3.4rem) 0; border-top:1px solid var(--line); }
+  .section-head{ display:flex; flex-direction:column; gap:.5rem; margin-bottom:1.8rem; max-width:70ch; }
+  .kicker{ font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); }
+  .section h2{ font-size: clamp(1.4rem,2.6vw,1.9rem); }
+  .section-lede{ color:var(--ink-soft); font-size:1rem; }
+
+  /* ---------- Objetivos ---------- */
+  .obj-grid{ display:grid; grid-template-columns: 1.1fr 1.4fr; gap:1.8rem; align-items:start;}
+  @media (max-width: 800px){ .obj-grid{ grid-template-columns:1fr; } }
+  .obj-geral{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:1.5rem;
+    box-shadow:var(--shadow);
+  }
+  .obj-geral h3{ font-size:1rem; color:var(--teal-ink); margin-bottom:.6rem; }
+  .obj-geral p{ font-size:1.08rem; font-family:var(--font-display); font-weight:500; color:var(--ink); max-width:none;}
+  ol.obj-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.65rem; counter-reset:obj;}
+  ol.obj-list li{
+    counter-increment:obj; display:flex; gap:.8rem; align-items:baseline;
+    background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:.7rem .9rem;
+  }
+  ol.obj-list li::before{
+    content: counter(obj); font-family:var(--font-display); font-weight:700; color:var(--teal);
+    font-size:.95rem; flex:none; width:1.4rem; text-align:right;
+  }
+  ol.obj-list li span{ font-size:.94rem; color:var(--ink-soft); }
+
+  /* ---------- Funcoes ---------- */
+  .func-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; }
+  @media (max-width: 760px){ .func-grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 480px){ .func-grid{ grid-template-columns: 1fr; } }
+  .func-card{ background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:1rem 1.1rem; }
+  .func-card .f-name{ font-weight:700; font-size:.92rem; color:var(--ink); display:block; margin-bottom:.25rem;}
+  .func-card .f-desc{ font-size:.85rem; color:var(--ink-soft); }
+  .note-box{
+    margin-top:1.3rem; display:flex; gap:.8rem; align-items:flex-start;
+    background: var(--gold-tint); border:1px solid var(--line); border-radius:12px; padding:.9rem 1.1rem;
+  }
+  .note-box svg{ flex:none; margin-top:.15rem; color:var(--gold-ink); }
+  .note-box p{ font-size:.9rem; color:var(--ink); max-width:60ch;}
+
+  /* ---------- Grupos (tabs) ---------- */
+  .group-tabs{ display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:1.6rem; }
+  .group-tab{
+    font-family:var(--font-body); font-weight:700; font-size:.88rem; cursor:pointer;
+    border:1.5px solid var(--line-strong); background:var(--surface); color:var(--ink-soft);
+    padding:.65rem 1.05rem; border-radius:999px; display:flex; align-items:center; gap:.55rem;
+    transition: background .15s ease, color .15s ease, border-color .15s ease, transform .1s ease;
+  }
+  .group-tab .swatch{ width:.65rem; height:.65rem; border-radius:50%; flex:none; }
+  .group-tab:hover{ transform: translateY(-1px); }
+  .group-tab[aria-selected="true"]{ color:#fff; border-color:transparent; box-shadow:var(--shadow); }
+  .group-tab[data-g="1"][aria-selected="true"]{ background:var(--teal); }
+  .group-tab[data-g="2"][aria-selected="true"]{ background:var(--orange); }
+  .group-tab[data-g="3"][aria-selected="true"]{ background:var(--gold); }
+  .group-tab[data-g="4"][aria-selected="true"]{ background:var(--coral); }
+  .group-tab[data-g="1"] .swatch{ background:var(--teal); }
+  .group-tab[data-g="2"] .swatch{ background:var(--orange); }
+  .group-tab[data-g="3"] .swatch{ background:var(--gold); }
+  .group-tab[data-g="4"] .swatch{ background:var(--coral); }
+  .group-tab[aria-selected="true"] .swatch{ background:#fff; }
+
+  .group-panel{ display:none; }
+  .group-panel.is-active{ display:block; animation: fadeUp .35s ease; }
+  @keyframes fadeUp{ from{ opacity:0; transform: translateY(6px);} to{ opacity:1; transform:none;} }
+
+  .group-intro{
+    border-radius:18px; padding:1.4rem 1.6rem; margin-bottom:1.4rem; border:1px solid var(--line);
+  }
+  .group-intro h3{ font-size:1.3rem; margin-bottom:.35rem; }
+  .group-intro p{ color:var(--ink-soft); font-size:.95rem; }
+  .group-intro .g-num{ font-family:var(--font-display); font-size:.85rem; font-weight:700; letter-spacing:.02em; }
+
+  .subgroup-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap:1rem; }
+  @media (max-width: 980px){ .subgroup-grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 560px){ .subgroup-grid{ grid-template-columns: 1fr; } }
+  .subgroup-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:1.1rem 1.15rem;
+    box-shadow:var(--shadow); display:flex; flex-direction:column; gap:.6rem;
+  }
+  .subgroup-card .sg-tag{
+    font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint);
+  }
+  .subgroup-card h4{ font-size:.95rem; font-weight:700; font-family:var(--font-body); }
+  .subgroup-card p{ font-size:.87rem; color:var(--ink-soft); max-width:none; }
+
+  .articulacao{ margin-top:1.6rem; display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; }
+  @media (max-width:760px){ .articulacao{ grid-template-columns:1fr; } }
+  .articulacao .a-card{
+    background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:1rem 1.1rem;
+    font-size:.88rem; color:var(--ink-soft);
+  }
+  .articulacao .a-card b{ display:block; color:var(--ink); font-size:.9rem; margin-bottom:.3rem; }
+
+  /* ---------- Eixos ---------- */
+  .eixos-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1.1rem; }
+  @media (max-width:760px){ .eixos-grid{ grid-template-columns:1fr; } }
+  .eixo-card{
+    border-radius:16px; padding:1.3rem 1.4rem; border:1px solid var(--line); background:var(--surface);
+  }
+  .eixo-card .eixo-head{ display:flex; align-items:center; gap:.6rem; margin-bottom:.7rem; }
+  .eixo-letter{
+    font-family:var(--font-display); font-weight:700; font-size:1.1rem; width:2rem; height:2rem;
+    border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; flex:none;
+  }
+  .eixo-card:nth-of-type(1) .eixo-letter{ background:var(--teal); }
+  .eixo-card:nth-of-type(2) .eixo-letter{ background:var(--orange); }
+  .eixo-card:nth-of-type(3) .eixo-letter{ background:var(--gold); }
+  .eixo-card:nth-of-type(4) .eixo-letter{ background:var(--coral); }
+  .eixo-card h4{ font-size:1.02rem; }
+  .eixo-card ul{ margin:0; padding-left:1.15rem; display:flex; flex-direction:column; gap:.45rem; }
+  .eixo-card li{ font-size:.88rem; color:var(--ink-soft); }
+
+  /* ---------- Tables ---------- */
+  .table-scroll{ overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--surface); box-shadow:var(--shadow); }
+  table{ border-collapse:collapse; width:100%; min-width:640px; font-size:.88rem; }
+  thead th{
+    text-align:left; font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint);
+    padding:.85rem 1rem; border-bottom:1px solid var(--line); background:var(--surface-2); white-space:nowrap;
+  }
+  tbody td{ padding:.85rem 1rem; border-bottom:1px solid var(--line); color:var(--ink-soft); vertical-align:top; }
+  tbody tr:last-child td{ border-bottom:none; }
+  tbody td:first-child{ color:var(--ink); font-weight:700; }
+  tbody tr.is-today{ background: var(--teal-tint); }
+  .today-badge{
+    display:inline-block; margin-left:.5rem; font-size:.65rem; font-weight:700; text-transform:uppercase;
+    letter-spacing:.05em; color:#fff; background:var(--teal); padding:.15rem .5rem; border-radius:999px; vertical-align:middle;
+  }
+
+  /* ---------- Cronograma ---------- */
+  .timeline{ display:flex; flex-direction:column; gap:1rem; }
+  .week{
+    display:grid; grid-template-columns: 5.5rem 1fr; gap:1.2rem; border:1px solid var(--line);
+    background:var(--surface); border-radius:16px; padding:1.3rem 1.4rem; box-shadow:var(--shadow);
+  }
+  @media (max-width:640px){ .week{ grid-template-columns:1fr; } }
+  .week .w-badge{ display:flex; flex-direction:column; align-items:flex-start; gap:.3rem; }
+  .week .w-num{ font-family:var(--font-display); font-weight:700; font-size:1.8rem; color:var(--teal); line-height:1; }
+  .week .w-label{ font-size:.7rem; text-transform:uppercase; color:var(--ink-faint); font-weight:700; letter-spacing:.05em;}
+  .week h4{ font-size:1.05rem; margin-bottom:.5rem; }
+  .week .w-text{ font-size:.9rem; color:var(--ink-soft); margin-bottom:.9rem; }
+  .week .w-cols{ display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; }
+  @media (max-width:640px){ .week .w-cols{ grid-template-columns:1fr; } }
+  .w-block .w-block-title{ font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; font-weight:700; color:var(--ink-faint); margin-bottom:.5rem;}
+  .w-block ul{ margin:0; padding-left:1.1rem; display:flex; flex-direction:column; gap:.35rem;}
+  .w-block li{ font-size:.85rem; color:var(--ink-soft);}
+  .week.is-current{ border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-tint), var(--shadow); }
+
+  /* ---------- Acompanhamento / Visitas ---------- */
+  .roteiro-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.6rem; }
+  .roteiro-list li{
+    display:flex; gap:.8rem; background:var(--surface); border:1px solid var(--line); border-radius:10px;
+    padding:.75rem .95rem; font-size:.9rem; color:var(--ink-soft);
+  }
+  .roteiro-list li b{ color:var(--ink); font-weight:700; }
+
+  .visita-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; margin-top:1.4rem;}
+  @media (max-width:860px){ .visita-grid{ grid-template-columns:1fr; } }
+  .visita-card{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:1.2rem 1.3rem;}
+  .visita-card h4{ font-size:.95rem; margin-bottom:.7rem; color:var(--teal-ink); }
+  .visita-card ul{ margin:0; padding-left:1.1rem; display:flex; flex-direction:column; gap:.4rem;}
+  .visita-card li{ font-size:.85rem; color:var(--ink-soft); }
+
+  .example-box{
+    margin-top:1.3rem; border:1px dashed var(--line-strong); border-radius:12px; padding:1rem 1.2rem;
+    background:var(--surface-2); font-size:.87rem; color:var(--ink-soft);
+  }
+  .example-box b{ color:var(--ink); }
+
+  .alert{
+    display:flex; gap:.85rem; align-items:flex-start; background:var(--coral-tint); border:1px solid var(--line);
+    border-radius:14px; padding:1rem 1.2rem; margin-top:1.4rem;
+  }
+  .alert svg{ color:var(--coral-ink); flex:none; margin-top:.15rem; }
+  .alert p{ font-size:.89rem; color:var(--ink); max-width:62ch; }
+
+  /* ---------- Avaliacao ---------- */
+  .crit-row{ display:grid; grid-template-columns: 1fr; }
+  .weight-cell{ display:flex; align-items:center; gap:.6rem; white-space:nowrap; }
+  .weight-bar{ width:64px; height:6px; border-radius:99px; background:var(--surface-2); overflow:hidden; flex:none; }
+  .weight-bar span{ display:block; height:100%; background:var(--teal); border-radius:99px; }
+  .weight-num{ font-weight:700; color:var(--ink); font-variant-numeric: tabular-nums; }
+
+  /* ---------- Referencias ---------- */
+  .ref-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; }
+  @media (max-width:800px){ .ref-grid{ grid-template-columns:1fr; } }
+  .ref-block h4{ font-size:.92rem; color:var(--teal-ink); margin-bottom:.7rem; }
+  .ref-block ul{ list-style:none; margin:0 0 1.4rem; padding:0; display:flex; flex-direction:column; gap:.6rem;}
+  .ref-block li{ font-size:.87rem; color:var(--ink-soft); padding-left:1rem; position:relative;}
+  .ref-block li::before{ content:"—"; position:absolute; left:0; color:var(--ink-faint); }
+
+  .link-list{ list-style:none; margin:1rem 0 0; padding:0; display:flex; flex-direction:column; gap:.55rem; }
+  .link-card{
+    display:flex; flex-direction:column; gap:.15rem; background:var(--surface); border:1px solid var(--line);
+    border-radius:10px; padding:.75rem .95rem;
+  }
+  .link-card .l-title{ font-size:.86rem; font-weight:700; color:var(--ink); }
+  .link-card a{ font-size:.82rem; word-break:break-all; }
+
+  .quest-list{ list-style:none; margin:1rem 0 0; padding:0; columns:2; column-gap:1.6rem; }
+  @media (max-width:700px){ .quest-list{ columns:1; } }
+  .quest-list li{ font-size:.87rem; color:var(--ink-soft); margin-bottom:.55rem; break-inside:avoid; padding-left:1rem; position:relative;}
+  .quest-list li::before{ content:"?"; position:absolute; left:0; color:var(--gold-ink); font-weight:700; }
+
+  .add-space{
+    margin-top:2rem; border:1.5px dashed var(--line-strong); border-radius:16px; padding:1.5rem 1.7rem;
+    background: var(--surface);
+  }
+  .add-space h4{ font-size:.95rem; color:var(--ink); margin-bottom:.3rem; }
+  .add-space .hint{ font-size:.83rem; color:var(--ink-faint); margin-bottom:1.1rem;}
+  .ruled{ border-bottom:1px solid var(--line-strong); height:1.9rem; }
+  .ruled:last-child{ border-bottom:1px solid var(--line-strong); }
+
+  footer{ border-top:1px solid var(--line); padding: 2rem 0 3rem; }
+  footer p{ font-size:.82rem; color:var(--ink-faint); }
+</style>
+</head>
+<body>
+
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="brand">Jogos, Brinquedos <em>&amp;</em> Brincadeiras</span>
+    <nav class="toc" aria-label="Sumário">
+      <a href="#objetivos">Objetivos</a>
+      <a href="#organizacao">Organização</a>
+      <a href="#grupos">Os 4 eixos</a>
+      <a href="#eixos">Eixos</a>
+      <a href="#etapas">Etapas</a>
+      <a href="#cronograma">Cronograma</a>
+      <a href="#acompanhamento">Acompanhamento</a>
+      <a href="#visitas">Visitas</a>
+      <a href="#avaliacao">Avaliação</a>
+      <a href="#referencias">Referências</a>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="hero" id="inicio">
+    <span class="eyebrow"><span class="dot"></span>Proposta de investigação · projeto coletivo</span>
+    <h1 class="title">Jogos, brinquedos, brincadeiras e espaços brincantes</h1>
+    <p class="hero-sub">Projeto coletivo da disciplina de Jogos, brinquedos e brincadeiras. Investigação organizada em quatro grandes grupos, com produto pedagógico ou cultural construído por cada subgrupo ao longo do semestre.</p>
+
+    <div class="hero-meta">
+      <div class="meta-pill"><span class="k">Duração</span><span class="v">5 encontros de 4 aulas</span></div>
+      <div class="meta-pill"><span class="k">Formato</span><span class="v">1 encontro em espaço externo</span></div>
+      <div class="meta-pill"><span class="k">Organização</span><span class="v">4 grandes grupos · 4 subgrupos</span></div>
+      <div class="meta-pill"><span class="k">Acompanhamento</span><span class="v">Processual, em todas as aulas</span></div>
+    </div>
+
+    <div class="question-card">
+      <span class="q-label">Questão norteadora</span>
+      <p>Como podemos articular teorias críticas do brincar para conceber espaços, formações continuadas e materiais pedagógicos capazes de desemparedar as infâncias e transformar a cultura escolar?</p>
+      <button class="q-toggle" type="button" aria-expanded="false" aria-controls="q-alt" title="Ver outras formulações da questão norteadora">
+        <span class="q-toggle-icon" aria-hidden="true">+</span>
+        <span class="q-toggle-label">Outras formulações da questão</span>
+      </button>
+      <div class="q-alt" id="q-alt" hidden>
+        <p class="q-alt-item">Como podemos transformar as concepções de infância e desenvolvimento em projetos culturais, espaços brincantes, oficinas e materiais didáticos que resgatem a autoria e a potência do brincar na prática docente?</p>
+        <p class="q-alt-item">Como podemos investigar as práticas lúdicas contemporâneas e mobilizar saberes teóricos para propor ações formativas, intervenções espaciais e projetos culturais que fortaleçam os territórios brincantes da infância?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="produto">
+    <div class="section-head">
+      <span class="kicker">Produto coletivo</span>
+      <h2>O que cada subgrupo pode produzir</h2>
+      <p class="section-lede">A turma realiza uma investigação organizada em quatro grandes grupos. Ao final, cada subgrupo (de 3 a 4 pessoas) produz uma das possibilidades a seguir, sempre articulando referências teóricas, observações de campo, registros, propostas pedagógicas e reflexões sobre diferentes culturas e territórios.</p>
+    </div>
+    <div class="func-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="func-card"><span class="f-name">a) Projeto de educação e cultura</span><span class="f-desc">Baseado em algum edital existente.</span></div>
+      <div class="func-card"><span class="f-name">b) Oficina de formação continuada</span><span class="f-desc">Envolvendo educadores, com aspectos teórico-práticos.</span></div>
+      <div class="func-card"><span class="f-name">c) Espaço brincante</span><span class="f-desc">Proposta de espaço para estudantes de licenciatura.</span></div>
+      <div class="func-card"><span class="f-name">d) E-book brincante</span><span class="f-desc">Possibilidades brincantes voltadas a educadores.</span></div>
+      <div class="func-card"><span class="f-name">e) Material ou kit de apoio</span><span class="f-desc">Com orientações teórico-práticas para o brincar.</span></div>
+      <div class="func-card"><span class="f-name">f) Nova proposta</span><span class="f-desc">Outra possibilidade, desde que articule teoria, campo e prática.</span></div>
+    </div>
+    <p style="margin-top:1.2rem; font-size:.95rem; color:var(--ink-soft);">Todo o processo de cada grupo deverá ser compartilhado na pasta dos grupos: <a href="https://drive.google.com/drive/folders/1FceKChVkcrbjD9uTBJYlQBuy-GzWrHLB" target="_blank" rel="noopener">https://drive.google.com/drive/folders/1FceKChVkcrbjD9uTBJYlQBuy-GzWrHLB</a></p>
+    <div class="note-box">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <p>A proposta deve considerar a centralidade das interações e da brincadeira na Educação Infantil e em outros contextos educativos, em diálogo com a Base Nacional Comum Curricular e com as Diretrizes Curriculares Nacionais para a Educação Infantil, além do brincar como direito da criança (artigo 31 da Convenção sobre os Direitos da Criança).</p>
+    </div>
+  </section>
+
+  <section class="section" id="objetivos">
+    <div class="section-head">
+      <span class="kicker">1 · Objetivos</span>
+      <h2>Objetivo geral e objetivos específicos</h2>
+    </div>
+    <div class="obj-grid">
+      <div class="obj-geral">
+        <h3>Objetivo geral</h3>
+        <p>Investigar jogos, brinquedos, brincadeiras e espaços brincantes para construir propostas pedagógicas e culturais contextualizadas, inclusivas e relacionadas à realidade da turma e da instituição.</p>
+      </div>
+      <ol class="obj-list">
+        <li><span>Conceituar e diferenciar jogos, brinquedos, brincadeiras, brinquedotecas e espaços brincantes.</span></li>
+        <li><span>Investigar como esses elementos aparecem em escolas, instituições culturais, bibliotecas, centros comunitários, Sescs, museus, praças e outros espaços.</span></li>
+        <li><span>Conhecer práticas de diferentes regiões do Brasil e de outros países.</span></li>
+        <li><span>Valorizar perspectivas indígenas, africanas, afro-brasileiras e de outros grupos culturais sem tratar esses povos como homogêneos.</span></li>
+        <li><span>Relacionar a investigação aos autores estudados no semestre anterior e a autores contemporâneos.</span></li>
+        <li><span>Observar como os espaços, materiais e regras favorecem ou limitam a participação, a imaginação, a autonomia e a convivência.</span></li>
+        <li><span>Criar um catálogo de opções brincantes que possa ser consultado por educadores.</span></li>
+        <li><span>Elaborar coletivamente uma proposta para a brinquedoteca, considerando objetivos, organização, materiais, usos e mediação.</span></li>
+        <li><span>Desenvolver procedimentos de pesquisa, registro, análise, trabalho em equipe, comunicação e revisão.</span></li>
+        <li><span>Acompanhar o processo em todas as aulas, apresentando avanços, dificuldades, decisões e necessidades de apoio.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="organizacao">
+    <div class="section-head">
+      <span class="kicker">2 · Organização da turma</span>
+      <h2>Grandes grupos, subgrupos e funções</h2>
+      <p class="section-lede">A turma é dividida em quatro grandes grupos, cada um organizado em subgrupos de duas ou três pessoas. Os subgrupos têm tarefas específicas, mas compartilham informações e constroem um produto comum. Recomenda-se alternar as funções ao longo das semanas — nenhuma tarefa deve ficar concentrada em uma só pessoa.</p>
+    </div>
+    <div class="func-grid">
+      <div class="func-card"><span class="f-name">Coordenação</span><span class="f-desc">Organiza reuniões, prazos e divisão de tarefas.</span></div>
+      <div class="func-card"><span class="f-name">Pesquisa</span><span class="f-desc">Localiza livros, artigos, vídeos, documentos e outras fontes.</span></div>
+      <div class="func-card"><span class="f-name">Campo e documentação</span><span class="f-desc">Planeja visitas, observações, entrevistas e registros.</span></div>
+      <div class="func-card"><span class="f-name">Análise</span><span class="f-desc">Compara informações, identifica padrões e formula interpretações.</span></div>
+      <div class="func-card"><span class="f-name">Produção</span><span class="f-desc">Organiza textos, imagens, tabelas, slides e catálogo.</span></div>
+      <div class="func-card"><span class="f-name">Apresentação</span><span class="f-desc">Prepara a comunicação oral e registra as contribuições da turma.</span></div>
+    </div>
+
+    <div class="articulacao">
+      <div class="a-card"><b>Registros de processo</b>Diário de bordo e pasta on-line, atualizados continuamente.</div>
+      <div class="a-card"><b>Compartilhamentos</b>A cada encontro, em roda de conversa complementada pela professora.</div>
+      <div class="a-card"><b>Pasta compartilhada</b>Reúne os materiais do projeto em andamento, acessível à turma.</div>
+    </div>
+  </section>
+
+  <section class="section" id="grupos">
+    <div class="section-head">
+      <span class="kicker">3 · Grupos e subgrupos</span>
+      <h2>Os quatro grandes eixos (para cada equipe)</h2>
+      <p class="section-lede">Cada grande grupo investiga um recorte do tema, sempre organizado nos mesmos quatro papéis de subgrupo — conceitos e história, culturas e territórios, investigação de campo, proposições pedagógicas.</p>
+    </div>
+
+    <div class="group-tabs" role="tablist" aria-label="Selecionar grande grupo">
+      <button class="group-tab" data-g="1" role="tab" aria-selected="true"><span class="swatch"></span>1 · Brinquedos</button>
+      <button class="group-tab" data-g="2" role="tab" aria-selected="false"><span class="swatch"></span>2 · Jogos</button>
+      <button class="group-tab" data-g="3" role="tab" aria-selected="false"><span class="swatch"></span>3 · Brincadeiras</button>
+      <button class="group-tab" data-g="4" role="tab" aria-selected="false"><span class="swatch"></span>4 · Brinquedotecas e espaços brincantes</button>
+    </div>
+
+    <div class="group-panel is-active" data-panel="1">
+      <div class="group-intro" style="background:var(--teal-tint);">
+        <span class="g-num" style="color:var(--teal-ink);">Grande grupo 1</span>
+        <h3>Brinquedos</h3>
+        <p>O objeto, sua materialidade, sua origem cultural e seu lugar no acervo pedagógico.</p>
+      </div>
+      <div class="subgroup-grid">
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 1 · Conceitos e história</span><h4>O que é brinquedo?</h4><p>Relações entre objeto, imaginação, materialidade, consumo, criação e cultura.</p></div>
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 2 · Culturas e territórios</span><h4>De onde vêm os brinquedos</h4><p>Brinquedos de diferentes regiões do Brasil e do mundo; brinquedos indígenas, africanos e afro-brasileiros; autoria e contexto cultural.</p></div>
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 3 · Investigação de campo</span><h4>O que existe nas instituições</h4><p>Quais materiais estão disponíveis? Como são guardados, escolhidos e utilizados?</p></div>
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 4 · Proposições pedagógicas</span><h4>Para o acervo da turma</h4><p>Quais brinquedos compor, como confeccioná-los, adaptar materiais e garantir acessibilidade.</p></div>
+      </div>
+    </div>
+
+    <div class="group-panel" data-panel="2">
+      <div class="group-intro" style="background:var(--orange-tint);">
+        <span class="g-num" style="color:var(--orange-ink);">Grande grupo 2</span>
+        <h3>Jogos</h3>
+        <p>Regras, cooperação, competição, estratégia e as formas de participação que elas produzem.</p>
+      </div>
+      <div class="subgroup-grid">
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 1 · Conceitos e história</span><h4>O que é jogo?</h4><p>Tipos de jogo — faz de conta, regras, cooperação, competição, estratégia, sorte, linguagem e aprendizagem.</p></div>
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 2 · Culturas e territórios</span><h4>Jogos pelo mundo</h4><p>Jogos tradicionais, populares, regionais, indígenas, africanos, afro-brasileiros, internacionais, analógicos e digitais.</p></div>
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 3 · Investigação de campo</span><h4>Quem define as regras?</h4><p>Como os jogos são propostos nas escolas e em outros espaços? Quem participa ou fica de fora?</p></div>
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 4 · Proposições pedagógicas</span><h4>Selecionar e adaptar</h4><p>Como selecionar, adaptar ou criar jogos para diferentes idades, necessidades e formas de participação.</p></div>
+      </div>
+    </div>
+
+    <div class="group-panel" data-panel="3">
+      <div class="group-intro" style="background:var(--gold-tint);">
+        <span class="g-num" style="color:var(--gold-ink);">Grande grupo 3</span>
+        <h3>Brincadeiras</h3>
+        <p>Corpo, imaginação e a autoria das crianças no tempo e no espaço de brincar.</p>
+      </div>
+      <div class="subgroup-grid">
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 1 · Conceitos e história</span><h4>O que é brincadeira?</h4><p>Imaginação, corpo, movimento, faz de conta, repetição, criação, cultura e autoria das crianças.</p></div>
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 2 · Culturas e territórios</span><h4>Brincadeiras em contexto</h4><p>Diferentes regiões, gerações, povos e contextos; brincadeiras contemporâneas, urbanas, rurais, digitais e da cultura popular.</p></div>
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 3 · Investigação de campo</span><h4>Como as crianças brincam</h4><p>Quais tempos, materiais, relações e intervenções dos adultos aparecem nos espaços observados?</p></div>
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 4 · Proposições pedagógicas</span><h4>Ampliar tempos e espaços</h4><p>Como propor experiências de brincadeira sem controlar excessivamente a ação das crianças?</p></div>
+      </div>
+    </div>
+
+    <div class="group-panel" data-panel="4">
+      <div class="group-intro" style="background:var(--coral-tint);">
+        <span class="g-num" style="color:var(--coral-ink);">Grande grupo 4</span>
+        <h3>Brinquedotecas e espaços brincantes</h3>
+        <p>Funções, modelos e a proposta final para a brinquedoteca da turma.</p>
+      </div>
+      <div class="subgroup-grid">
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 1 · Conceitos e história</span><h4>O que é uma brinquedoteca?</h4><p>Funções educativas, culturais, sociais e comunitárias de uma brinquedoteca ou Espaço do Brincar.</p></div>
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 2 · Culturas e territórios</span><h4>Modelos pelo mundo</h4><p>Brinquedotecas e espaços brincantes no Brasil e no mundo; relações entre território, comunidade, cultura e infância.</p></div>
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 3 · Investigação de campo</span><h4>Visita e observação</h4><p>Escolas, instituições, bibliotecas, Sescs, museus ou praças. Análise de ambientes, materiais, acessibilidade e mediações.</p></div>
+        <div class="subgroup-card"><span class="sg-tag">Subgrupo 4 · Proposições pedagógicas</span><h4>O projeto da brinquedoteca</h4><p>Finalidade, público, organização, materiais, usos, cuidados, acessibilidade, cronograma e avaliação.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="eixos">
+    <div class="section-head">
+      <span class="kicker">4 · Eixos comuns</span>
+      <h2>Perguntas de apoio para todos os grupos</h2>
+    </div>
+    <div class="eixos-grid">
+      <div class="eixo-card">
+        <div class="eixo-head"><span class="eixo-letter">A</span><h4>Conceituação</h4></div>
+        <ul>
+          <li>Como podemos definir o tema investigado?</li>
+          <li>Qual é a diferença entre o conceito estudado e conceitos próximos?</li>
+          <li>Que autores ajudam a compreender esse tema?</li>
+          <li>Que ideias dos autores estudados no semestre anterior podem ser retomadas?</li>
+          <li>Que autores contemporâneos ampliam, questionam ou atualizam essa discussão?</li>
+        </ul>
+      </div>
+      <div class="eixo-card">
+        <div class="eixo-head"><span class="eixo-letter">B</span><h4>Cultura, território e diversidade</h4></div>
+        <ul>
+          <li>De onde vem a prática, o objeto, o jogo ou o espaço pesquisado?</li>
+          <li>Quem o criou, transmite, modifica ou utiliza?</li>
+          <li>Como a prática se transforma quando muda de território ou de geração?</li>
+          <li>Que perspectivas indígenas, africanas, afro-brasileiras, quilombolas, populares ou comunitárias aparecem?</li>
+          <li>A fonte respeita o contexto cultural ou apresenta uma generalização?</li>
+        </ul>
+      </div>
+      <div class="eixo-card">
+        <div class="eixo-head"><span class="eixo-letter">C</span><h4>Presença nos espaços educativos</h4></div>
+        <ul>
+          <li>O que há nas escolas e instituições visitadas ou pesquisadas?</li>
+          <li>Como os materiais e espaços estão organizados? Quem pode acessá-los?</li>
+          <li>Quais práticas são valorizadas, limitadas ou invisibilizadas?</li>
+          <li>Como os adultos participam: observam, organizam, ensinam, intervêm, controlam ou brincam junto?</li>
+          <li>Há condições de acessibilidade, segurança, conforto e autonomia?</li>
+        </ul>
+      </div>
+      <div class="eixo-card">
+        <div class="eixo-head"><span class="eixo-letter">D</span><h4>Atualidade e possibilidades pedagógicas</h4></div>
+        <ul>
+          <li>Como a prática se relaciona com a vida das crianças hoje?</li>
+          <li>Como dialoga com tecnologias, mídias e mudanças nos modos de convivência?</li>
+          <li>Pode ser adaptada sem perder seu sentido cultural?</li>
+          <li>Como pode promover participação, cooperação, imaginação, movimento, linguagem e convivência?</li>
+          <li>Que materiais, tempos e espaços seriam necessários?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note-box">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <p>A turma deve evitar expressões genéricas como "a cultura indígena" ou "a cultura africana". Sempre que possível, identificar o povo, a comunidade, a região, o país, o período e a fonte da informação.</p>
+    </div>
+  </section>
+
+  <section class="section" id="etapas">
+    <div class="section-head">
+      <span class="kicker">5 · Etapas comuns de trabalho</span>
+      <h2>O mesmo percurso para todos os grupos</h2>
+      <p class="section-lede">Em cada aula, os grupos informam em qual etapa estão, que evidências já produziram e qual será o próximo passo.</p>
+    </div>
+    <div class="table-scroll">
+      <table id="etapas-table">
+        <thead><tr><th>Etapa</th><th>Pergunta orientadora</th><th>Evidência esperada</th></tr></thead>
+        <tbody>
+          <tr data-date="09.09"><td>1. Delimitar <span class="date-tag">(09.09)</span></td><td>O que exatamente investigaremos e por quê?</td><td>Questão do grupo, objetivo, subperguntas, divisão de funções e plano de trabalho.</td></tr>
+          <tr data-date="23.09"><td>2. Conceituar <span class="date-tag">(23.09)</span></td><td>O que os autores e as fontes dizem sobre o tema?</td><td>Mapa conceitual, fichamentos e bibliografia inicial.</td></tr>
+          <tr data-date="30.09"><td>3. Investigar <span class="date-tag">(30.09)</span></td><td>O que encontramos em escolas, instituições, territórios e registros culturais?</td><td>Roteiros, observações, entrevistas, imagens autorizadas, descrições, vídeos e documentos.</td></tr>
+          <tr data-date="07.10"><td>4. Analisar <span class="date-tag">(07.10)</span></td><td>O que os dados indicam? Que relações, diferenças, tensões ou possibilidades aparecem?</td><td>Registro das descobertas, análises e reflexões; continuidade da proposta.</td></tr>
+          <tr data-date="21.10"><td>5. Propor <span class="date-tag">(21.10)</span></td><td>O que podemos recomendar ou criar para a prática pedagógica e a brinquedoteca?</td><td>Proposta, vivência, instalação e plano de apresentação.</td></tr>
+          <tr><td>6. Avaliar</td><td>Como revisar o que propusemos e receber contribuições?</td><td>Resumo de uma página e apresentação final.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="cronograma">
+    <div class="section-head">
+      <span class="kicker">6 · Cronograma</span>
+      <h2>As cinco semanas do projeto</h2>
+    </div>
+    <div class="timeline" id="timeline">
+      <div class="week" data-week="1">
+        <div class="w-badge"><span class="w-num">01</span><span class="w-label">Semana</span></div>
+        <div>
+          <h4>Formação, delimitação e planejamento</h4>
+          <p class="w-text">A turma é apresentada ao projeto e à questão norteadora. Os grupos são formados e cada um escolhe uma pergunta específica relacionada ao seu tema. Os subgrupos distribuem funções, combinam formas de comunicação e definem o que será investigado diretamente e o que será estudado por meio de fontes.</p>
+          <div class="w-cols">
+            <div class="w-block"><div class="w-block-title">Entrega processual</div><ul>
+              <li>Nome do grupo e dos subgrupos</li>
+              <li>Questão central e objetivo</li>
+              <li>Primeiras perguntas de investigação</li>
+              <li>Divisão de responsabilidades</li>
+              <li>Cronograma interno</li>
+              <li>Lista inicial de autores, livros, vídeos, instituições e lugares a investigar</li>
+              <li>Roteiro preliminar de observação ou visita</li>
+            </ul></div>
+            <div class="w-block"><div class="w-block-title">Apresentação em aula</div><ul>
+              <li>Até 7 minutos por grupo</li>
+              <li>"O que vamos investigar? Como pretendemos fazer isso? De que ajuda precisamos?"</li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week" data-week="2">
+        <div class="w-badge"><span class="w-num">02</span><span class="w-label">Semana</span></div>
+        <div>
+          <h4>Conceitos, referências e primeiros dados</h4>
+          <p class="w-text">Os grupos estudam as definições e os debates relacionados ao tema, retomando autores do semestre anterior e selecionando autores contemporâneos. Também iniciam a pesquisa de campo, as visitas ou a análise de registros de instituições e práticas.</p>
+          <div class="w-cols">
+            <div class="w-block"><div class="w-block-title">Entrega processual</div><ul>
+              <li>Mapa conceitual, fichamentos ou sínteses de ao menos 3 referências</li>
+              <li>Uma referência do semestre anterior e uma referência contemporânea</li>
+              <li>Primeiros registros de campo ou análise de fontes</li>
+              <li>Atualização do plano de trabalho</li>
+            </ul></div>
+            <div class="w-block"><div class="w-block-title">Apresentação em aula</div><ul>
+              <li>O que já se compreendeu, o que ainda está confuso e quais evidências foram encontradas</li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week" data-week="3">
+        <div class="w-badge"><span class="w-num">03</span><span class="w-label">Semana</span></div>
+        <div>
+          <h4>Investigar</h4>
+          <p class="w-text">Os grupos organizam os dados e comparam diferentes contextos. Devem visitar um espaço educativo ou cultural para conhecer uma proposta relacionada ao brincar, aos jogos e às brincadeiras.</p>
+          <div class="w-cols">
+            <div class="w-block"><div class="w-block-title">Entrega processual</div><ul>
+              <li>Seleção dos principais achados</li>
+              <li>Versão preliminar da estrutura da proposta, ideias e materiais iniciais</li>
+              <li>Rascunho das recomendações pedagógicas</li>
+              <li>Lista de dúvidas e decisões que precisam de revisão</li>
+            </ul></div>
+            <div class="w-block"><div class="w-block-title">Apresentação em aula</div><ul>
+              <li>Turma e docente oferecem perguntas e sugestões</li>
+              <li>Cada equipe registra quais contribuições incorporará (ou não) e justifica as escolhas</li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week" data-week="4">
+        <div class="w-badge"><span class="w-num">04</span><span class="w-label">Semana</span></div>
+        <div>
+          <h4>Síntese, apresentação e avaliação</h4>
+          <p class="w-text">Os grupos finalizam o resumo de uma página, o portfólio de processo, as fichas do catálogo e a apresentação. O Grupo 4 consolida o projeto da brinquedoteca com as contribuições dos demais grupos.</p>
+          <div class="w-cols">
+            <div class="w-block"><div class="w-block-title">Entrega processual</div><ul>
+              <li>Portfólio do processo</li>
+              <li>Seleção dos principais achados</li>
+              <li>Versão avançada da proposta, ideias e materiais</li>
+              <li>Rascunho das recomendações pedagógicas</li>
+              <li>Lista de dúvidas e decisões que precisam de revisão</li>
+              <li>Continuidade no desenvolvimento do material proposto</li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week" data-week="5">
+        <div class="w-badge"><span class="w-num">05</span><span class="w-label">Semana</span></div>
+        <div>
+          <h4>Apresentação</h4>
+          <p class="w-text">Organização das apresentações e compartilhamentos, com possibilidade de inscrição para a Mostra de Artes.</p>
+          <div class="w-cols">
+            <div class="w-block"><div class="w-block-title">Entrega final</div><ul>
+              <li>Apresentação</li>
+              <li>Documentação do projeto</li>
+              <li>Reflexões e avaliações finais</li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="acompanhamento">
+    <div class="section-head">
+      <span class="kicker">7 · Acompanhamento</span>
+      <h2>Ficha de acompanhamento</h2>
+      <p class="section-lede">Planilha compartilhada com o registro processual de cada equipe, atualizada a cada aula.</p>
+    </div>
+    <ul class="link-list" style="margin-top:0;">
+      <li class="link-card">
+        <span class="l-title">Ficha de acompanhamento (planilha)</span>
+        <a href="https://docs.google.com/spreadsheets/d/1Y3hUEcUmfYsiiY0J8_qcqZdGV4K2x40-QF-u4x7kxiM/edit?usp=sharing" target="_blank" rel="noopener">https://docs.google.com/spreadsheets/d/1Y3hUEcUmfYsiiY0J8_qcqZdGV4K2x40-QF-u4x7kxiM/edit?usp=sharing</a>
+      </li>
+      <li class="link-card">
+        <span class="l-title">Pasta dos grupos</span>
+        <a href="https://drive.google.com/drive/folders/1FceKChVkcrbjD9uTBJYlQBuy-GzWrHLB" target="_blank" rel="noopener">https://drive.google.com/drive/folders/1FceKChVkcrbjD9uTBJYlQBuy-GzWrHLB</a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section" id="visitas">
+    <div class="section-head">
+      <span class="kicker">8 · Trabalho de campo</span>
+      <h2>Roteiro para visitas, observações e entrevistas</h2>
+      <p class="section-lede">Cada grupo pode adaptar o roteiro ao seu tema. As perguntas orientam visitas a escolas, instituições culturais, bibliotecas, Sescs, museus, praças, centros comunitários, brinquedotecas e outros espaços.</p>
+    </div>
+    <div class="visita-grid">
+      <div class="visita-card">
+        <h4>Sobre o espaço</h4>
+        <ul>
+          <li>Qual é a finalidade do espaço e quem o frequenta?</li>
+          <li>Como os materiais estão organizados?</li>
+          <li>Há áreas para movimento, faz de conta, construção, leitura, jogos tranquilos e convivência?</li>
+          <li>Há espaços de escolha livre e espaços de atividade orientada?</li>
+          <li>Como são consideradas acessibilidade, segurança, conforto e autonomia?</li>
+        </ul>
+      </div>
+      <div class="visita-card">
+        <h4>Sobre materiais e práticas</h4>
+        <ul>
+          <li>Que brinquedos, jogos e brincadeiras estão presentes? De onde vieram?</li>
+          <li>Quem decide o que será disponibilizado?</li>
+          <li>Como as crianças aprendem a utilizar, guardar, modificar ou criar os materiais?</li>
+          <li>Que práticas culturais aparecem e quais parecem ausentes?</li>
+          <li>Os materiais permitem diferentes modos de participação?</li>
+        </ul>
+      </div>
+      <div class="visita-card">
+        <h4>Sobre a mediação</h4>
+        <ul>
+          <li>Como os adultos intervêm? As regras são fixas ou podem ser negociadas?</li>
+          <li>Como são acolhidos conflitos, invenções e mudanças nas brincadeiras?</li>
+          <li>Há participação das crianças na organização do espaço?</li>
+          <li>O brincar é tempo livre, atividade pedagógica, direito, convivência — ou combinação dessas dimensões?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="example-box">
+      Os registros devem distinguir claramente descrição e interpretação. Por exemplo: <b>"havia caixas de madeira ao lado do tapete"</b> é uma descrição; <b>"as caixas favoreciam brincadeiras de construção"</b> é uma interpretação, que deve ser sustentada por observação ou fala dos participantes.
+    </div>
+
+    <div class="alert">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
+      <p>Não se deve fotografar ou filmar crianças, nem divulgar suas imagens, sem as autorizações institucionais e familiares cabíveis. Quando não houver autorização, podem ser utilizados registros do ambiente sem identificação de pessoas, desenhos, esquemas, descrições e fotografias de materiais.</p>
+    </div>
+  </section>
+
+  <section class="section" id="avaliacao">
+    <div class="section-head">
+      <span class="kicker">9 · Avaliação</span>
+      <h2>Critérios de acompanhamento e avaliação</h2>
+      <p class="section-lede">A avaliação valoriza o processo de investigação, não apenas o acabamento da apresentação final.</p>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Critério</th><th>O que será observado</th><th>Peso</th></tr></thead>
+        <tbody>
+          <tr><td>Delimitação do problema</td><td>Clareza da pergunta, do objetivo e do recorte.</td><td class="weight-cell"><span class="weight-bar"><span style="width:15%"></span></span><span class="weight-num">15%</span></td></tr>
+          <tr><td>Processo e participação</td><td>Cumprimento de tarefas, divisão de responsabilidades, presença nos relatos e colaboração.</td><td class="weight-cell"><span class="weight-bar"><span style="width:20%"></span></span><span class="weight-num">20%</span></td></tr>
+          <tr><td>Qualidade das referências</td><td>Uso de autores, documentos, vídeos, observações e fontes identificadas.</td><td class="weight-cell"><span class="weight-bar"><span style="width:15%"></span></span><span class="weight-num">15%</span></td></tr>
+          <tr><td>Análise e argumentação</td><td>Capacidade de relacionar conceitos, evidências, contextos culturais e implicações pedagógicas.</td><td class="weight-cell"><span class="weight-bar"><span style="width:20%"></span></span><span class="weight-num">20%</span></td></tr>
+          <tr><td>Produto coletivo</td><td>Qualidade da proposta.</td><td class="weight-cell"><span class="weight-bar"><span style="width:20%"></span></span><span class="weight-num">20%</span></td></tr>
+          <tr><td>Processo</td><td>Envolvimento e compartilhamento de processos ao longo dos encontros.</td><td class="weight-cell"><span class="weight-bar"><span style="width:10%"></span></span><span class="weight-num">10%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note-box" style="background:var(--gold-tint);">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"/></svg>
+      <p><b>Ponto adicional:</b> relatos sistematizados de estágio, no formato de relato de experiência e/ou artigo científico, a respeito das propostas desenvolvidas ao longo do semestre relacionadas aos temas da disciplina.</p>
+    </div>
+  </section>
+
+  <section class="section" id="referencias">
+    <div class="section-head">
+      <span class="kicker">10 · Referências</span>
+      <h2>Referências e links de apoio</h2>
+      <p class="section-lede">Antes de utilizar uma fonte, verificar: quem produziu o material, quando e onde, com qual objetivo; se identifica comunidades e contextos culturais; se distingue relato, opinião, interpretação e evidência; se pode ser confrontada com outra referência; se respeita autoria, imagem e contexto.</p>
+    </div>
+
+    <div class="ref-grid">
+      <div class="ref-block">
+        <h4>Para todos os grupos</h4>
+        <ul>
+          <li>KISHIMOTO, Tizuko M. <i>Jogo, brinquedo, brincadeira e a educação.</i> Referência para diferenciar conceitos e discutir as relações entre brincar, cultura e educação.</li>
+          <li>BROUGÈRE, Gilles. <i>Brinquedo e cultura.</i> Analisa brinquedos como objetos culturais e sua relação com a sociedade.</li>
+          <li>HUIZINGA, Johan. <i>Homo Ludens.</i> Discute o jogo como dimensão da cultura.</li>
+          <li>FREIRE, Paulo. <i>Pedagogia da autonomia.</i> Relaciona investigação, diálogo, autoria e prática educativa.</li>
+          <li>Base Nacional Comum Curricular — direitos de aprendizagem, campos de experiência e práticas pedagógicas.</li>
+          <li>Convenção sobre os Direitos da Criança, artigo 31 — o brincar como direito.</li>
+        </ul>
+
+        <h4>Perguntas para escolher boas referências</h4>
+        <ul class="quest-list" style="margin-top:0;">
+          <li>Quem produziu o material?</li>
+          <li>Quando e onde foi produzido?</li>
+          <li>Qual é o objetivo da publicação ou do vídeo?</li>
+          <li>A fonte identifica as comunidades e os contextos culturais?</li>
+          <li>Há distinção entre relato, opinião, interpretação e evidência?</li>
+          <li>A fonte pode ser confrontada com outra referência?</li>
+        </ul>
+      </div>
+
+      <div class="ref-block">
+        <h4>Para ampliar a pesquisa de campo</h4>
+        <ul>
+          <li><b>Território do Brincar</b> — registros audiovisuais, textos e experiências sobre brincadeiras de crianças em diferentes contextos brasileiros.</li>
+          <li><b>Learning through Play</b> — relatório internacional com argumentos e referências sobre aprendizagem por meio do brincar.</li>
+          <li><b>Acervos locais e comunitários</b> — museus, bibliotecas, brinquedotecas, centros culturais, Sescs, escolas, associações, grupos de cultura popular e guardiãs e guardiões de memórias brincantes.</li>
+          <li>Produções de autoras e autores indígenas, africanos, afro-brasileiros, quilombolas e de outros grupos culturais — considerando autoria, contexto, território e respeito aos modos de transmissão dos conhecimentos.</li>
+        </ul>
+
+        <h4 style="margin-top:.2rem;">Leituras complementares</h4>
+        <ul>
+          <li>BONDÍA, Jorge L. Notas sobre a experiência e o saber de experiência. <i>Revista Brasileira de Educação</i>, Campinas, n. 19, p. 20–28, 2002.</li>
+          <li>PEDROZA, Regina L. S. Aprendizagem e subjetividade: uma construção a partir do brincar. <i>Revista do Departamento de Psicologia da UFF</i>, v. 17, n. 2, p. 61–76, 2005.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4 style="margin-top:2rem; color:var(--teal-ink); font-size:.92rem;">Links de apoio</h4>
+    <ul class="link-list">
+      <li class="link-card">
+        <span class="l-title">Pasta de textos (Drive) — localize e contribua com textos para esta página</span>
+        <a href="https://drive.google.com/drive/folders/1k16L9leAhsattjEVX2darmpxRwE4NqSK?usp=sharing" target="_blank" rel="noopener">https://drive.google.com/drive/folders/1k16L9leAhsattjEVX2darmpxRwE4NqSK?usp=sharing</a>
+      </li>
+      <li class="link-card">
+        <span class="l-title">Vídeo-bate-papo sobre o documentário Tarja Branca</span>
+        <a href="https://drive.google.com/file/d/1BzZ-g48XUi1UZTig39sEzvNKtmtTg3n6/view?usp=sharing" target="_blank" rel="noopener">https://drive.google.com/file/d/1BzZ-g48XUi1UZTig39sEzvNKtmtTg3n6/view?usp=sharing</a>
+      </li>
+      <li class="link-card">
+        <span class="l-title">KISHIMOTO, T. M. — O jogo e a educação infantil (PDF)</span>
+        <a href="https://drive.google.com/file/d/1NbkCu8FnQvzlvVLJwL0pojuYwBoYP34f/view?usp=sharing" target="_blank" rel="noopener">https://drive.google.com/file/d/1NbkCu8FnQvzlvVLJwL0pojuYwBoYP34f/view?usp=sharing</a>
+      </li>
+      <li class="link-card">
+        <span class="l-title">Reel — materiais não estruturados (Instagram)</span>
+        <a href="https://www.instagram.com/reel/DFnmiMPP3B0/" target="_blank" rel="noopener">https://www.instagram.com/reel/DFnmiMPP3B0/</a>
+      </li>
+      <li class="link-card">
+        <span class="l-title">Nova Escola — Como usar materiais de largo alcance ou não estruturados na Educação Infantil</span>
+        <a href="https://novaescola.org.br/conteudo/21721/como-usar-materiais-de-largo-alcance-ou-nao-estruturados-na-educacao-infantil" target="_blank" rel="noopener">https://novaescola.org.br/conteudo/21721/como-usar-materiais-de-largo-alcance-ou-nao-estruturados-na-educacao-infantil</a>
+      </li>
+      <li class="link-card">
+        <span class="l-title">Tempo de Creche — tag "material não estruturado"</span>
+        <a href="https://tempodecreche.com.br/tag/material-nao-estruturado/" target="_blank" rel="noopener">https://tempodecreche.com.br/tag/material-nao-estruturado/</a>
+      </li>
+      <li class="link-card">
+        <span class="l-title">BONDÍA, J. L. — Notas sobre a experiência e o saber de experiência (PDF, Scielo)</span>
+        <a href="http://www.scielo.br/pdf/rbedu/n19/n19a02.pdf" target="_blank" rel="noopener">http://www.scielo.br/pdf/rbedu/n19/n19a02.pdf</a>
+      </li>
+      <li class="link-card">
+        <span class="l-title">Território do Brincar — MiniDocs: petecas em diferentes regiões do Brasil (YouTube)</span>
+        <a href="https://www.youtube.com/watch?v=wXEjjIUOCck" target="_blank" rel="noopener">https://www.youtube.com/watch?v=wXEjjIUOCck</a>
+      </li>
+      <li class="link-card">
+        <span class="l-title">PEDROZA, R. L. S. — Aprendizagem e subjetividade (PDF, Scielo)</span>
+        <a href="http://www.scielo.br/pdf/rdpsi/v17n2/v17n2a06.pdf" target="_blank" rel="noopener">http://www.scielo.br/pdf/rdpsi/v17n2/v17n2a06.pdf</a>
+      </li>
+      <li class="link-card">
+        <span class="l-title">Palestra Semana da Pedagogia (Sorocaba) — Música e arte como ferramenta pedagógica com crianças periféricas e indígenas</span>
+        <a href="https://drive.google.com/file/d/18BH3DzLkF4ZPKd-x7dutCiMbE4ZUHm8s/view?usp=sharing" target="_blank" rel="noopener">https://drive.google.com/file/d/18BH3DzLkF4ZPKd-x7dutCiMbE4ZUHm8s/view?usp=sharing</a>
+      </li>
+      <li class="link-card">
+        <span class="l-title">E-book Jogos, Brinquedos e Brincadeiras na Educação Infantil — Turma de Pedagogia de 2026</span>
+        <a href="https://canva.link/mo1ni690f6xu7z3" target="_blank" rel="noopener">https://canva.link/mo1ni690f6xu7z3</a>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Jogos, brinquedos e brincadeiras — projeto coletivo. Documento de apoio à investigação da turma; atualize a pasta compartilhada conforme o processo avança.</p>
+  </footer>
+</main>
+
+<script>
+  (function(){
+    var qToggle = document.querySelector('.q-toggle');
+    if(qToggle){
+      qToggle.addEventListener('click', function(){
+        var expanded = qToggle.getAttribute('aria-expanded') === 'true';
+        qToggle.setAttribute('aria-expanded', String(!expanded));
+        document.getElementById('q-alt').hidden = expanded;
+      });
+    }
+
+    var tabs = document.querySelectorAll('.group-tab');
+    var panels = document.querySelectorAll('.group-panel');
+    tabs.forEach(function(tab){
+      tab.addEventListener('click', function(){
+        var g = tab.getAttribute('data-g');
+        tabs.forEach(function(t){ t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
+        panels.forEach(function(p){ p.classList.toggle('is-active', p.getAttribute('data-panel') === g); });
+      });
+    });
+
+    // Mark today's stage on the etapas table and current week, based on DD.MM dates (assumed current year).
+    try{
+      var today = new Date();
+      var y = today.getFullYear();
+      var rows = document.querySelectorAll('#etapas-table tbody tr[data-date]');
+      var parsed = [];
+      rows.forEach(function(r){
+        var parts = r.getAttribute('data-date').split('.');
+        var d = new Date(y, parseInt(parts[1],10)-1, parseInt(parts[0],10));
+        parsed.push({row:r, date:d});
+      });
+      var todayStr = today.toDateString();
+      var current = null;
+      parsed.forEach(function(p){
+        if(p.date.toDateString() === todayStr){ current = p; }
+      });
+      if(current){
+        current.row.classList.add('is-today');
+        var firstCell = current.row.querySelector('td');
+        var badge = document.createElement('span');
+        badge.className = 'today-badge';
+        badge.textContent = 'Hoje';
+        firstCell.appendChild(badge);
+      }
+    }catch(e){}
+  })();
+</script>
+
+</body>
+</html>
