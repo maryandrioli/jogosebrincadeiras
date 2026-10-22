@@ -6,99 +6,100 @@
 <title>Jogos, Brinquedos e Brincadeiras</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
 <style>
   :root{
-    --bg: #FAF5EA;
-    --surface: #FFFFFF;
-    --surface-2: #F3EAD8;
-    --ink: #26211D;
-    --ink-soft: #5C5346;
-    --ink-faint: #726856;
-    --line: #E3D6BC;
-    --line-strong: #CDBB98;
+    --bg: #F6EEDB;
+    --surface: #FFFDF7;
+    --surface-2: #F1E4C6;
+    --ink: #2A1A12;
+    --ink-soft: #45322A;
+    --ink-faint: #5E4A3E;
+    --line: #E3D3AE;
+    --line-strong: #B8A27A;
 
-    --teal: #3E8E86;
-    --teal-tint: #E4F0EE;
-    --teal-ink: #1F4A46;
+    --teal: #4F6E86;
+    --teal-tint: #E2EDF4;
+    --teal-ink: #24394A;
 
-    --orange: #D97C3B;
-    --orange-tint: #FBEBDD;
-    --orange-ink: #7A3F16;
+    --orange: #B85A1E;
+    --orange-tint: #FBE6D4;
+    --orange-ink: #6A2C07;
 
-    --gold: #D9A233;
-    --gold-tint: #FBF0D9;
-    --gold-ink: #7A550F;
+    --gold: #E2AE33;
+    --gold-tint: #FBEFCB;
+    --gold-ink: #5C4004;
 
-    --coral: #C4543F;
-    --coral-tint: #F8E4DE;
-    --coral-ink: #7A2C1D;
+    --coral: #A8322A;
+    --coral-tint: #F7DCD6;
+    --coral-ink: #5E1712;
 
-    --accent: #3E8E86;
+    --accent: #6B1F1F;
     --shadow: 0 1px 2px rgba(38,33,29,.06), 0 8px 24px -12px rgba(38,33,29,.18);
 
+    --font-hand: 'Caveat Brush', 'Fraunces', cursive;
     --font-display: 'Fraunces', Georgia, 'Iowan Old Style', serif;
     --font-body: 'Karla', 'Segoe UI', Roboto, sans-serif;
   }
 
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg: #1B1712;
-      --surface: #221D17;
-      --surface-2: #2A241C;
-      --ink: #F1E9DA;
-      --ink-soft: #C3B7A2;
-      --ink-faint: #948875;
-      --line: #3B3226;
-      --line-strong: #4E4330;
+      --bg: #1F1612;
+      --surface: #2B1F1A;
+      --surface-2: #362822;
+      --ink: #FBF2E2;
+      --ink-soft: #E6D6BE;
+      --ink-faint: #C6B297;
+      --line: #4A382D;
+      --line-strong: #6C5546;
 
-      --teal: #5FADA4;
-      --teal-tint: #223531;
-      --teal-ink: #B7E4DD;
+      --teal: #A9C8DD;
+      --teal-tint: #263440;
+      --teal-ink: #D3E5F1;
 
-      --orange: #E9985A;
-      --orange-tint: #3A2A1C;
-      --orange-ink: #F3CBA3;
+      --orange: #F09A5E;
+      --orange-tint: #43291B;
+      --orange-ink: #FAD3B5;
 
-      --gold: #E6BC5C;
-      --gold-tint: #3A2F17;
-      --gold-ink: #F2DBA0;
+      --gold: #F0C55A;
+      --gold-tint: #433518;
+      --gold-ink: #F8E2A6;
 
-      --coral: #E17E68;
-      --coral-tint: #3B241D;
-      --coral-ink: #F2C1B3;
+      --coral: #EE7A68;
+      --coral-tint: #47201B;
+      --coral-ink: #F9C9BF;
 
-      --accent: #5FADA4;
+      --accent: #EE7A68;
       --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
     }
   }
   :root[data-theme="dark"]{
-    --bg: #1B1712;
-    --surface: #221D17;
-    --surface-2: #2A241C;
-    --ink: #F1E9DA;
-    --ink-soft: #C3B7A2;
-    --ink-faint: #948875;
-    --line: #3B3226;
-    --line-strong: #4E4330;
+    --bg: #1F1612;
+    --surface: #2B1F1A;
+    --surface-2: #362822;
+    --ink: #FBF2E2;
+    --ink-soft: #E6D6BE;
+    --ink-faint: #C6B297;
+    --line: #4A382D;
+    --line-strong: #6C5546;
 
-    --teal: #5FADA4;
-    --teal-tint: #223531;
-    --teal-ink: #B7E4DD;
+    --teal: #A9C8DD;
+    --teal-tint: #263440;
+    --teal-ink: #D3E5F1;
 
-    --orange: #E9985A;
-    --orange-tint: #3A2A1C;
-    --orange-ink: #F3CBA3;
+    --orange: #F09A5E;
+    --orange-tint: #43291B;
+    --orange-ink: #FAD3B5;
 
-    --gold: #E6BC5C;
-    --gold-tint: #3A2F17;
-    --gold-ink: #F2DBA0;
+    --gold: #F0C55A;
+    --gold-tint: #433518;
+    --gold-ink: #F8E2A6;
 
-    --coral: #E17E68;
-    --coral-tint: #3B241D;
-    --coral-ink: #F2C1B3;
+    --coral: #EE7A68;
+    --coral-tint: #47201B;
+    --coral-ink: #F9C9BF;
 
-    --accent: #5FADA4;
+    --accent: #EE7A68;
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
   }
 
@@ -423,6 +424,81 @@
 
   footer{ border-top:1px solid var(--line); padding: 2rem 0 3rem; }
   footer p{ font-size:.82rem; color:var(--ink-faint); }
+
+  /* ---------- Estilo inspirado na pintura de Portinari ---------- */
+  body{
+    background-color:var(--bg);
+    background-image:
+      repeating-conic-gradient(from 0deg at 78% 6%, color-mix(in srgb,var(--line-strong) 20%,transparent) 0deg 1.2deg, transparent 1.2deg 4.5deg),
+      repeating-linear-gradient(112deg, color-mix(in srgb,var(--surface) 55%,transparent) 0 3px, transparent 3px 11px),
+      repeating-linear-gradient(68deg, color-mix(in srgb,var(--line) 35%,transparent) 0 2px, transparent 2px 17px);
+    background-attachment:fixed;
+  }
+  .topbar{ border-bottom:3px solid var(--orange); }
+  .brand{ font-family:var(--font-hand); font-weight:400; font-size:1.35rem; color:var(--coral); }
+  .brand em{ color:var(--gold); }
+  nav.toc a:hover{ border-color:var(--orange); }
+  nav.toc a.toc-museu{
+    color:#fff; background:var(--coral); border:none; border-radius:14px 6px 14px 8px;
+    padding:.3rem .8rem; box-shadow:2px 2px 0 var(--gold);
+  }
+  nav.toc a.toc-museu:hover{ background:var(--orange); color:#fff; }
+  .hero{ overflow:visible; }
+  .hero::before{
+    content:""; position:absolute; right:clamp(.5rem,6vw,4rem); top:1.6rem; z-index:-1;
+    width:clamp(90px,16vw,170px); aspect-ratio:1; border-radius:50%;
+    background:
+      repeating-linear-gradient(35deg, rgba(255,255,255,.35) 0 6px, transparent 6px 14px),
+      radial-gradient(circle at 40% 35%, #DCEBF3, #8FB3C9 70%, #E8B52C 72%, transparent 74%);
+    box-shadow:0 0 0 14px color-mix(in srgb,var(--gold) 18%,transparent), 0 0 60px 30px color-mix(in srgb,var(--surface) 70%,transparent);
+  }
+  h1.title{ color:var(--coral); }
+  .section h2{ display:inline-block; padding-bottom:.2rem;
+    background:linear-gradient(100deg, transparent 0 2%, color-mix(in srgb,var(--gold) 55%,transparent) 2% 97%, transparent 97%) no-repeat 0 92%/100% .45em; }
+  .kicker{ font-family:var(--font-hand); font-size:1.15rem; text-transform:none; letter-spacing:0; font-weight:400; color:var(--orange); }
+  .eyebrow{ background:var(--gold-tint); color:var(--orange-ink); }
+  .eyebrow .dot{ background:var(--coral); }
+  .meta-pill, .subgroup-card, .func-card, .eixo-card, .visita-card, .obj-geral, .week, .question-card, .table-scroll{
+    border-radius:18px 9px 16px 11px; border-width:1.5px;
+  }
+  .question-card{ background:linear-gradient(155deg, var(--surface), var(--gold-tint) 60%, var(--orange-tint)); border-left:6px solid var(--orange); }
+  .question-card .q-label{ color:var(--coral-ink); }
+  .museu-cta{
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;
+    margin-top:1.6rem; padding:1.2rem 1.4rem; border-radius:20px 8px 18px 10px;
+    background:repeating-linear-gradient(115deg, var(--orange) 0 10px, color-mix(in srgb,var(--orange) 85%,var(--coral)) 10px 20px);
+    color:#fff; box-shadow:4px 4px 0 var(--gold);
+  }
+  .museu-cta p{ margin:0; font-family:var(--font-display); font-size:1.12rem; color:#fff; }
+  .museu-cta a{ background:var(--surface); color:var(--coral-ink); font-weight:700; text-decoration:none;
+    padding:.6rem 1.1rem; border-radius:999px; white-space:nowrap; }
+  .museu-cta a:hover{ background:var(--gold-tint); }
+
+  /* ---------- Contraste e paleta bordô ---------- */
+  :root{ --maroon:#6B1F1F; }
+  body{ background-image: repeating-conic-gradient(from 0deg at 78% 6%, color-mix(in srgb,var(--line-strong) 10%,transparent) 0deg 1deg, transparent 1deg 5deg); }
+  .topbar{ background:var(--maroon); border-bottom:4px solid var(--gold); backdrop-filter:none; }
+  .brand{ color:#FBF2E2; }
+  .brand em{ color:var(--gold); }
+  nav.toc a{ color:#F3E3C8; }
+  nav.toc a:hover{ color:#fff; border-color:var(--gold); }
+  nav.toc a.toc-museu{ background:var(--gold); color:#2A1A12; box-shadow:none; }
+  nav.toc a.toc-museu:hover{ background:#fff; color:var(--maroon); }
+  h1.title{ color:var(--maroon); }
+  .kicker{ color:var(--coral); }
+  .section h2{ color:var(--ink); }
+  .eyebrow{ background:var(--maroon); color:#FBF2E2; border-color:var(--maroon); }
+  .eyebrow .dot{ background:var(--gold); }
+  .question-card{ background:var(--maroon); border:none; border-left:6px solid var(--gold); }
+  .question-card .q-label{ color:var(--gold); }
+  .question-card p{ color:#FBF2E2; }
+  .museu-cta{ background:var(--maroon); box-shadow:4px 4px 0 var(--gold); }
+  .museu-cta a{ background:var(--gold); color:#2A1A12; }
+  .week-chevron{ background:var(--maroon); }
+  .group-tab[data-g="3"][aria-selected="true"]{ color:#2A1A12; }
+  .eixo-card:nth-of-type(3) .eixo-letter{ color:#2A1A12; }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) h1.title{ color:var(--coral); } }
+  :root[data-theme="dark"] h1.title{ color:var(--coral); }
 </style>
 </head>
 <body>
@@ -432,6 +508,8 @@
   <div class="topbar-inner">
     <span class="brand">Jogos, Brinquedos <em>&amp;</em> Brincadeiras</span>
     <nav class="toc" aria-label="Sumário">
+      <a class="toc-museu" href="museu.html" target="_blank" rel="noopener">Conheça o Museu de Jogos, Brinquedos e Brincadeiras</a>
+      <a href="#produto">Exemplos de projetos</a>
       <a href="#objetivos">Objetivos</a>
       <a href="#organizacao">Organização</a>
       <a href="#eixos">Roteiro</a>
@@ -462,6 +540,11 @@
     <div class="question-card">
       <span class="q-label">Questão norteadora</span>
       <p>Como podemos articular teorias críticas do brincar para conceber espaços, formações continuadas e materiais pedagógicos capazes de desemparedar as infâncias e transformar a cultura escolar?</p>
+    </div>
+
+    <div class="museu-cta">
+      <p>Conheça o Museu de Jogos, Brinquedos e Brincadeiras</p>
+      <a href="museu.html" target="_blank" rel="noopener">Visitar o museu ↗</a>
     </div>
   </section>
 
